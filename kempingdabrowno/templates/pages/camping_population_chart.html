@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>Obłożenie kempingu na następne 30 dni</h1>
+    <canvas id="populationChart" width="400" height="200"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = [
+            {% for data in population_data %}
+                "{{ data.date }}",
+            {% endfor %}
+        ];
+        
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Ilość namiotów na kempingu',
+                data: [
+                    {% for data in population_data %}
+                        {{ data.total_people }},
+                    {% endfor %}
+                ],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',  // Changed from 'line' to 'bar'
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        var myChart = new Chart(
+            document.getElementById('populationChart'),
+            config
+        );
+    </script>
+{% endblock %}

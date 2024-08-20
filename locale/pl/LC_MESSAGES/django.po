@@ -1,0 +1,444 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-20 12:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: kempingdabrowno/templates/account/account_inactive.html:6
+#: kempingdabrowno/templates/account/account_inactive.html:9
+msgid "Account Inactive"
+msgstr "Konto nieaktywne"
+
+#: kempingdabrowno/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "To konto jest nieaktywne."
+
+#: kempingdabrowno/templates/account/email.html:8
+msgid "Account"
+msgstr "Konto"
+
+#: kempingdabrowno/templates/account/email.html:11
+msgid "E-mail Addresses"
+msgstr "Adresy e-mail"
+
+#: kempingdabrowno/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Następujące adresy e-mail są powiązane z Twoim kontem:"
+
+#: kempingdabrowno/templates/account/email.html:28
+msgid "Verified"
+msgstr "Zweryfikowany"
+
+#: kempingdabrowno/templates/account/email.html:30
+msgid "Unverified"
+msgstr "Niezweryfikowany"
+
+#: kempingdabrowno/templates/account/email.html:33
+msgid "Primary"
+msgstr "Główny"
+
+#: kempingdabrowno/templates/account/email.html:41
+msgid "Make Primary"
+msgstr "Ustaw jako główny"
+
+#: kempingdabrowno/templates/account/email.html:44
+msgid "Re-send Verification"
+msgstr "Wyślij ponownie weryfikację"
+
+#: kempingdabrowno/templates/account/email.html:47
+msgid "Remove"
+msgstr "Usuń"
+
+#: kempingdabrowno/templates/account/email.html:53
+msgid "Warning:"
+msgstr "Ostrzeżenie:"
+
+#: kempingdabrowno/templates/account/email.html:53
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"Obecnie nie masz ustawionego żadnego adresu e-mail. Powinieneś dodać adres "
+"e-mail, aby otrzymywać powiadomienia, zresetować hasło itp."
+
+#: kempingdabrowno/templates/account/email.html:56
+msgid "Add E-mail Address"
+msgstr "Dodaj adres e-mail"
+
+#: kempingdabrowno/templates/account/email.html:60
+msgid "Add E-mail"
+msgstr "Dodaj e-mail"
+
+#: kempingdabrowno/templates/account/email.html:67
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Czy na pewno chcesz usunąć wybrany adres e-mail?"
+
+#: kempingdabrowno/templates/account/email_confirm.html:7
+#: kempingdabrowno/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr "Potwierdź adres e-mail"
+
+#: kempingdabrowno/templates/account/email_confirm.html:14
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+"Proszę potwierdź, że <a href=\"mailto:%(email)s\">%(email)s</a> jest adresem "
+"e-mail użytkownika %(user_display)s."
+
+#: kempingdabrowno/templates/account/email_confirm.html:19
+msgid "Confirm"
+msgstr "Potwierdź"
+
+#: kempingdabrowno/templates/account/email_confirm.html:24
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"Link do potwierdzenia e-maila wygasł lub jest nieprawidłowy. Proszę <a "
+"href=\"%(email_url)s\">wydać nowe żądanie potwierdzenia e-maila</a>."
+
+#: kempingdabrowno/templates/account/login.html:8
+#: kempingdabrowno/templates/account/login.html:11
+#: kempingdabrowno/templates/account/login.html:50
+#: kempingdabrowno/templates/base.html:102
+msgid "Sign In"
+msgstr "Zaloguj się"
+
+#: kempingdabrowno/templates/account/login.html:15
+msgid "Please sign in with one of your existing third party accounts:"
+msgstr "Proszę zaloguj się za pomocą jednego z istniejących kont zewnętrznych:"
+
+#: kempingdabrowno/templates/account/login.html:17
+#, python-format
+msgid ""
+"Or, <a href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and "
+"sign in below:"
+msgstr ""
+"Lub, <a href=\"%(signup_url)s\">zarejestruj się</a> w %(site_name)s i zaloguj się poniżej:"
+
+#: kempingdabrowno/templates/account/login.html:27
+msgid "or"
+msgstr "lub"
+
+#: kempingdabrowno/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please <a "
+"href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+"Jeśli jeszcze nie założyłeś konta, najpierw <a href=\"%(signup_url)s\">zarejestruj się</a>."
+
+#: kempingdabrowno/templates/account/login.html:49
+msgid "Forgot Password?"
+msgstr "Zapomniałeś hasła?"
+
+#: kempingdabrowno/templates/account/logout.html:6
+#: kempingdabrowno/templates/account/logout.html:9
+#: kempingdabrowno/templates/account/logout.html:18
+#: kempingdabrowno/templates/base.html:91
+msgid "Sign Out"
+msgstr "Wyloguj się"
+
+#: kempingdabrowno/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr "Czy na pewno chcesz się wylogować?"
+
+#: kempingdabrowno/templates/account/password_change.html:7
+#: kempingdabrowno/templates/account/password_change.html:10
+#: kempingdabrowno/templates/account/password_change.html:16
+#: kempingdabrowno/templates/account/password_reset_from_key.html:7
+#: kempingdabrowno/templates/account/password_reset_from_key.html:14
+#: kempingdabrowno/templates/account/password_reset_from_key_done.html:6
+#: kempingdabrowno/templates/account/password_reset_from_key_done.html:9
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: kempingdabrowno/templates/account/password_reset.html:8
+#: kempingdabrowno/templates/account/password_reset.html:11
+#: kempingdabrowno/templates/account/password_reset_done.html:7
+#: kempingdabrowno/templates/account/password_reset_done.html:10
+msgid "Password Reset"
+msgstr "Resetowanie hasła"
+
+#: kempingdabrowno/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"Zapomniałeś hasła? Wprowadź poniżej swój adres e-mail, a my wyślemy Ci wiadomość e-mail umożliwiającą zresetowanie hasła."
+
+#: kempingdabrowno/templates/account/password_reset.html:25
+msgid "Reset My Password"
+msgstr "Zresetuj moje hasło"
+
+#: kempingdabrowno/templates/account/password_reset.html:27
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr "Proszę skontaktuj się z nami, jeśli masz jakiekolwiek problemy z resetowaniem hasła."
+
+#: kempingdabrowno/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"Wysłaliśmy do Ciebie wiadomość e-mail. Proszę skontaktuj się z nami, jeśli nie otrzymasz jej w ciągu kilku minut."
+
+#: kempingdabrowno/templates/account/password_reset_from_key.html:12
+msgid "Bad Token"
+msgstr "Nieprawidłowy token"
+
+#: kempingdabrowno/templates/account/password_reset_from_key.html:20
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+"Link do resetowania hasła był nieprawidłowy, prawdopodobnie dlatego, że został już użyty. Proszę zażądać <a href=\"%(passwd_reset_url)s\">nowego resetowania hasła</a>."
+
+#: kempingdabrowno/templates/account/password_reset_from_key.html:30
+msgid "change password"
+msgstr "zmień hasło"
+
+#: kempingdabrowno/templates/account/password_reset_from_key_done.html:10
+msgid "Your password is now changed."
+msgstr "Twoje hasło zostało zmienione."
+
+#: kempingdabrowno/templates/account/password_set.html:7
+#: kempingdabrowno/templates/account/password_set.html:10
+#: kempingdabrowno/templates/account/password_set.html:19
+msgid "Set Password"
+msgstr "Ustaw hasło"
+
+#: kempingdabrowno/templates/account/signup.html:7
+msgid "Signup"
+msgstr "Rejestracja"
+
+#: kempingdabrowno/templates/account/signup.html:10
+#: kempingdabrowno/templates/account/signup.html:25
+#: kempingdabrowno/templates/base.html:97
+msgid "Sign Up"
+msgstr "Zarejestruj się"
+
+#: kempingdabrowno/templates/account/signup.html:12
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"Masz już konto? Proszę <a href=\"%(login_url)s\">zaloguj się</a>."
+
+#: kempingdabrowno/templates/account/signup_closed.html:6
+#: kempingdabrowno/templates/account/signup_closed.html:9
+msgid "Sign Up Closed"
+msgstr "Rejestracja zamknięta"
+
+#: kempingdabrowno/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "Przepraszamy, ale rejestracja jest obecnie zamknięta."
+
+#: kempingdabrowno/templates/account/verification_sent.html:6
+#: kempingdabrowno/templates/account/verification_sent.html:9
+#: kempingdabrowno/templates/account/verified_email_required.html:6
+#: kempingdabrowno/templates/account/verified_email_required.html:9
+msgid "Verify Your E-mail Address"
+msgstr "Zweryfikuj swój adres e-mail"
+
+#: kempingdabrowno/templates/account/verification_sent.html:11
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"Wysłaliśmy do Ciebie wiadomość e-mail do weryfikacji. Postępuj zgodnie z podanym linkiem, aby zakończyć proces rejestracji. Proszę skontaktuj się z nami, jeśli nie otrzymasz jej w ciągu kilku minut."
+
+#: kempingdabrowno/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+"Ta część strony wymaga, abyśmy zweryfikowali, że\n"
+"jesteś tym, za kogo się podajesz. W tym celu wymagamy, abyś\n"
+"zweryfikował posiadanie swojego adresu e-mail."
+
+#: kempingdabrowno/templates/account/verified_email_required.html:17
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+"Wysłaliśmy do Ciebie wiadomość e-mail do\n"
+"weryfikacji. Proszę kliknij na link w tej wiadomości e-mail. Proszę\n"
+"skontaktuj się z nami, jeśli nie otrzymasz jej w ciągu kilku minut."
+
+#: kempingdabrowno/templates/account/verified_email_required.html:22
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong>Uwaga:</strong> nadal możesz <a href=\"%(email_url)s\">zmienić swój adres e-mail</a>."
+
+#: kempingdabrowno/templates/base.html:87
+msgid "My Profile"
+msgstr "Mój profil"
+
+#: kempingdabrowno/users/admin.py:25
+msgid "Personal info"
+msgstr "Dane osobowe"
+
+#: kempingdabrowno/users/admin.py:27
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: kempingdabrowno/users/admin.py:38
+msgid "Important dates"
+msgstr "Ważne daty"
+
+#: kempingdabrowno/users/apps.py:7
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: kempingdabrowno/users/forms.py:28
+#: kempingdabrowno/users/tests/test_forms.py:35
+msgid "This email has already been taken."
+msgstr "Ten adres e-mail jest już zajęty."
+
+#: kempingdabrowno/users/models.py:16
+msgid "Name of User"
+msgstr "Nazwa użytkownika"
+
+#: kempingdabrowno/users/models.py:19
+msgid "email address"
+msgstr "adres e-mail"
+
+#: kempingdabrowno/users/models.py:39
+msgid "Imię i nazwisko"
+msgstr "Imię i nazwisko"
+
+#: kempingdabrowno/users/models.py:40
+msgid "Email"
+msgstr "Email"
+
+#: kempingdabrowno/users/models.py:41
+msgid "Numer telefonu"
+msgstr "Numer telefonu"
+
+#: kempingdabrowno/users/models.py:44
+msgid "Data rozpoczęcia"
+msgstr "Data rozpoczęcia"
+
+#: kempingdabrowno/users/models.py:45
+msgid "Data zakończenia"
+msgstr "Data zakończenia"
+
+#: kempingdabrowno/users/models.py:48
+msgid "Liczba dorosłych"
+msgstr "Liczba dorosłych"
+
+#: kempingdabrowno/users/models.py:49
+msgid "Liczba dzieci (0-3 lata)"
+msgstr "Liczba dzieci (0-3 lata)"
+
+#: kempingdabrowno/users/models.py:50
+msgid "Liczba dzieci (4-13 lat)"
+msgstr "Liczba dzieci (4-13 lat)"
+
+#: kempingdabrowno/users/models.py:51
+msgid "Liczba zwierząt"
+msgstr "Liczba zwierząt"
+
+#: kempingdabrowno/users/models.py:55
+msgid "Namiot 2-osobowy"
+msgstr "Namiot 2-osobowy"
+
+#: kempingdabrowno/users/models.py:56
+msgid "Namiot 3-4 osobowy"
+msgstr "Namiot 3-4 osobowy"
+
+#: kempingdabrowno/users/models.py:57
+msgid "Namiot 5-6 osobowy"
+msgstr "Namiot 5-6 osobowy"
+
+#: kempingdabrowno/users/models.py:59
+msgid "Rodzaj namiotu"
+msgstr "Rodzaj namiotu"
+
+#: kempingdabrowno/users/models.py:61
+msgid "Czy wymagana przyczepa/kamper"
+msgstr "Czy wymagana przyczepa/kamper"
+
+#: kempingdabrowno/users/models.py:64
+msgid "Prąd i sanitariaty dla namiotu"
+msgstr "Prąd i sanitariaty dla namiotu"
+
+#: kempingdabrowno/users/models.py:65
+msgid "Prąd i sanitariaty dla przyczepy/kampera"
+msgstr "Prąd i sanitariaty dla przyczepy/kampera"
+
+#: kempingdabrowno/users/models.py:66
+msgid "Liczba dodatkowych osób"
+msgstr "Liczba dodatkowych osób"
+
+#: kempingdabrowno/users/models.py:67
+msgid "Wywóz odpadów"
+msgstr "Wywóz odpadów"
+
+#: kempingdabrowno/users/models.py:68
+msgid "Parking wymagany"
+msgstr "Parking wymagany"
+
+#: kempingdabrowno/users/models.py:71
+msgid "Liczba dorosłych na plaży"
+msgstr "Liczba dorosłych na plaży"
+
+#: kempingdabrowno/users/models.py:72
+msgid "Liczba dzieci na plaży"
+msgstr "Liczba dzieci na plaży"
+
+#: kempingdabrowno/users/models.py:75
+msgid "Zastosuj zniżkę za pobyt powyżej 5 dni"
+msgstr "Zastosuj zniżkę za pobyt powyżej 5 dni"
+
+#: kempingdabrowno/users/models.py:78
+msgid "Data zapytania"
+msgstr "Data zapytania"
+
+#: kempingdabrowno/users/models.py:81
+msgid "Czy pobyt został potwierdzony przez camping?"
+msgstr "Czy pobyt został potwierdzony przez camping?"
+
+#: kempingdabrowno/users/models.py:81
+msgid "Potwierdzone"
+msgstr "Potwierdzone"
+
+#: kempingdabrowno/users/models.py:82
+msgid "Czy rezerwacja została anulowana przez użytkownika?"
+msgstr "Czy rezerwacja została anulowana przez użytkownika?"
+
+#: kempingdabrowno/users/models.py:82
+msgid "Anulowane"
+msgstr "Anulowane"
+
+#: kempingdabrowno/users/tests/test_views.py:71
+#: kempingdabrowno/users/views.py:23
+msgid "Information successfully updated"
+msgstr "Informacje zostały pomyślnie zaktualizowane"

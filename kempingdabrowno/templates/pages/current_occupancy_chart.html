@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>Aktualne obłożenie kempingu dzisiaj - {{ today|date:"j F Y" }}</h1>
+    <div style="width: 350px; height: 350px; margin: 0 auto;">
+        <canvas id="occupancyChart" width="350" height="350"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const totalPeople = {{ total_people }};
+        const occupancyLevel = "{{ occupancy_level }}";
+
+        // Determine the color based on the occupancy level
+        let color;
+        if (occupancyLevel === 'low') {
+            color = 'green';
+        } else if (occupancyLevel === 'medium') {
+            color = 'orange';
+        } else {
+            color = 'red';
+        }
+
+        const data = {
+            labels: ['Zajęte', 'Wolne'],
+            datasets: [{
+                data: [totalPeople, 100 - totalPeople],  // Assuming 100 is the full capacity for simplicity
+                backgroundColor: [color, '#e0e0e0'],  // Color for occupied and gray for available
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,  // Ensures the chart keeps the correct size
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                if (tooltipItem.dataIndex === 0) {
+                                    return `Obłożenie: ${totalPeople} osób`;
+                                } else {
+                                    return `Dostępne miejsca: ${100 - totalPeople} osób`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var myChart = new Chart(
+            document.getElementById('occupancyChart'),
+            config
+        );
+    </script>
+{% endblock %}
