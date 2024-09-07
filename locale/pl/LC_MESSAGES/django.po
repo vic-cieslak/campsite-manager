@@ -344,11 +344,11 @@ msgstr "Numer telefonu"
 
 #: kempingdabrowno/users/models.py:44
 msgid "Data rozpoczęcia"
-msgstr "Data rozpoczęcia"
+msgstr "Data przyjazdu"
 
 #: kempingdabrowno/users/models.py:45
 msgid "Data zakończenia"
-msgstr "Data zakończenia"
+msgstr "Data wyjazdu"
 
 #: kempingdabrowno/users/models.py:48
 msgid "Liczba dorosłych"

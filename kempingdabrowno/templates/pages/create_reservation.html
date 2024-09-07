@@ -2,10 +2,57 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
+    #floatingContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Space between the button and the price */
+      z-index: 1000;
+    }
+  
+    .floating-box {
+      background-color: #1e40af; /* Tailwind's blue-600 */
+      color: white;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px; /* Set equal width */
+      height: 60px; /* Set equal height */
+    }
+  
+    #reservationButton {
+      background-color: #38af1e; /* Tailwind's blue-600 */
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 200px; /* Set equal width */
+      height: 60px; /* Set equal height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #reservationButton:hover {
+      background-color: #1d4ed8; /* Hover color */
+    }
+  </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <div class="container mx-auto mt-4 px-4 md:px-0">
+    <div class="container mx-auto mt-4 mb-32 px-4 md:px-0">
         <h1 class="text-2xl font-semibold mb-4 text-center">Zarezerwuj miejsce na kempingu</h1>
         <form method="post" class="needs-validation" novalidate id="reservationForm">
             {% csrf_token %}
@@ -106,21 +153,51 @@
             <div class="mb-6 max-w-sm mx-auto">
                 {{ form.apply_discount|as_crispy_field }}
             </div>
-
-            <!-- Total Price -->
-            <div class="mb-6 max-w-sm mx-auto text-center">
-                <h2 class="text-xl font-semibold">Total Price: <span id="totalPrice">0</span> PLN</h2>
+            
+           
+            <div id="floatingContainer">
+                <!-- Total Price -->
+                <div id="totalPriceBox" class="floating-box">
+                    <h5>Cena końcowa: <span id="totalPrice">0</span> PLN</h5>
+                </div>
+            
+                <!-- Reservation Button -->
+                <button id="reservationButton" type="submit">
+                    Zarezerwuj
+                </button>
             </div>
-
             <!-- Submit Button -->
-            <div class="text-center max-w-sm mx-auto">
-                <button type="submit" class="btn btn-primary w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Zarezerwuj</button>
-            </div>
+         
         </form>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            // Get the actual rendered input IDs for start_date and end_date
+            const startDateInput = document.getElementById('{{ form.start_date.auto_id }}');
+            const endDateInput = document.getElementById('{{ form.end_date.auto_id }}');
+            
+            // Initialize Flatpickr on the start_date field
+            flatpickr(startDateInput, {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                onChange: function(selectedDates, dateStr, instance) {
+                    // Set the minimum date of the end date based on the start date
+                    flatpickr(endDateInput, {
+                        dateFormat: "Y-m-d",
+                        minDate: dateStr
+                    });
+                }
+            });
+
+            // Initialize Flatpickr on the end_date field with today's date as the minimum
+            flatpickr(endDateInput, {
+                dateFormat: "Y-m-d",
+                minDate: "today"
+            });
+
+
             const totalPriceEl = document.getElementById('totalPrice');
 
             const numAdults = document.getElementById('{{ form.num_adults.id_for_label }}');
