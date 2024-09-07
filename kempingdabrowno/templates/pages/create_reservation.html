@@ -2,89 +2,183 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Zarezerwuj miejsce na kempingu</h1>
-        <form method="post" class="needs-validation" novalidate>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <div class="container mx-auto mt-4 px-4 md:px-0">
+        <h1 class="text-2xl font-semibold mb-4 text-center">Zarezerwuj miejsce na kempingu</h1>
+        <form method="post" class="needs-validation" novalidate id="reservationForm">
             {% csrf_token %}
-            <div class="row mb-3">
-                <div class="col-md-6">
+            
+            <!-- User Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.full_name|as_crispy_field }}
                 </div>
-                <div class="col-md-6">
+                <div>
                     {{ form.email|as_crispy_field }}
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
+                <div>
                     {{ form.phone_number|as_crispy_field }}
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6">
+
+            <!-- Dates -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.start_date|as_crispy_field }}
                 </div>
-                <div class="col-md-6">
+                <div>
                     {{ form.end_date|as_crispy_field }}
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    {{ form.num_adults|as_crispy_field }}
+
+            <!-- Number of People -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
+                    {{ form.num_adults|as_crispy_field }} 
+                    <input type="hidden" id="price_per_adult" value="50">
                 </div>
-                <div class="col-md-4">
+                <div>
                     {{ form.num_children_0_3|as_crispy_field }}
+                    <input type="hidden" id="price_per_child_0_3" value="0">
                 </div>
-                <div class="col-md-4">
+                <div>
                     {{ form.num_children_4_13|as_crispy_field }}
+                    <input type="hidden" id="price_per_child_4_13" value="30">
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6">
+
+            <!-- Camping Details -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.tent_type|as_crispy_field }}
                 </div>
-                <div class="col-md-6">
+                <div>
                     {{ form.caravan_required|as_crispy_field }}
+                    <input type="hidden" id="price_for_caravan" value="100">
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-4">
+
+            <!-- Electricity and Extras -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.electricity_for_tent|as_crispy_field }}
+                    <input type="hidden" id="price_for_electricity_tent" value="20">
                 </div>
-                <div class="col-md-4">
+                <div>
                     {{ form.electricity_for_caravan|as_crispy_field }}
+                    <input type="hidden" id="price_for_electricity_caravan" value="30">
                 </div>
-                <div class="col-md-4">
+                <div>
                     {{ form.extra_person_count|as_crispy_field }}
+                    <input type="hidden" id="price_per_extra_person" value="40">
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6">
+
+            <!-- Additional Services -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.waste_disposal|as_crispy_field }}
                 </div>
-                <div class="col-md-6">
+                <div>
                     {{ form.parking_required|as_crispy_field }}
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6">
+
+            <!-- Beach Stay -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
                     {{ form.num_beach_stay_adults|as_crispy_field }}
                 </div>
-                <div class="col-md-6">
+                <div>
                     {{ form.num_beach_stay_children|as_crispy_field }}
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    {{ form.apply_discount|as_crispy_field }}
-                </div>
+
+            <!-- Discount -->
+            <div class="mb-6 max-w-sm mx-auto">
+                {{ form.apply_discount|as_crispy_field }}
             </div>
-            <button type="submit" class="btn btn-primary">Zarezerwuj</button>
+
+            <!-- Total Price -->
+            <div class="mb-6 max-w-sm mx-auto text-center">
+                <h2 class="text-xl font-semibold">Total Price: <span id="totalPrice">0</span> PLN</h2>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center max-w-sm mx-auto">
+                <button type="submit" class="btn btn-primary w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Zarezerwuj</button>
+            </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalPriceEl = document.getElementById('totalPrice');
+
+            const numAdults = document.getElementById('{{ form.num_adults.id_for_label }}');
+            const numChildren0_3 = document.getElementById('{{ form.num_children_0_3.id_for_label }}');
+            const numChildren4_13 = document.getElementById('{{ form.num_children_4_13.id_for_label }}');
+            const caravanRequired = document.getElementById('{{ form.caravan_required.id_for_label }}');
+            const electricityForTent = document.getElementById('{{ form.electricity_for_tent.id_for_label }}');
+            const electricityForCaravan = document.getElementById('{{ form.electricity_for_caravan.id_for_label }}');
+            const extraPersonCount = document.getElementById('{{ form.extra_person_count.id_for_label }}');
+
+            function calculateTotalPrice() {
+                let totalPrice = 0;
+
+                const pricePerAdult = parseInt(document.getElementById('price_per_adult').value);
+                const pricePerChild0_3 = parseInt(document.getElementById('price_per_child_0_3').value);
+                const pricePerChild4_13 = parseInt(document.getElementById('price_per_child_4_13').value);
+                const priceForCaravan = parseInt(document.getElementById('price_for_caravan').value);
+                const priceForElectricityTent = parseInt(document.getElementById('price_for_electricity_tent').value);
+                const priceForElectricityCaravan = parseInt(document.getElementById('price_for_electricity_caravan').value);
+                const pricePerExtraPerson = parseInt(document.getElementById('price_per_extra_person').value);
+
+                // Adults
+                totalPrice += (numAdults.value ? parseInt(numAdults.value) * pricePerAdult : 0);
+
+                // Children 0-3
+                totalPrice += (numChildren0_3.value ? parseInt(numChildren0_3.value) * pricePerChild0_3 : 0);
+
+                // Children 4-13
+                totalPrice += (numChildren4_13.value ? parseInt(numChildren4_13.value) * pricePerChild4_13 : 0);
+
+                // Extra person
+                totalPrice += (extraPersonCount.value ? parseInt(extraPersonCount.value) * pricePerExtraPerson : 0);
+
+                // Caravan
+                if (caravanRequired.checked) {
+                    totalPrice += priceForCaravan;
+                }
+
+                // Electricity for tent
+                if (electricityForTent.checked) {
+                    totalPrice += priceForElectricityTent;
+                }
+
+                // Electricity for caravan
+                if (electricityForCaravan.checked) {
+                    totalPrice += priceForElectricityCaravan;
+                }
+
+                totalPriceEl.textContent = totalPrice;
+            }
+
+            // Add event listeners to form inputs
+            [numAdults, numChildren0_3, numChildren4_13, extraPersonCount, caravanRequired, electricityForTent, electricityForCaravan].forEach(input => {
+                input.addEventListener('change', calculateTotalPrice);
+            });
+
+            // Initial calculation on page load
+            calculateTotalPrice();
+        });
+    </script>
 {% endblock %}

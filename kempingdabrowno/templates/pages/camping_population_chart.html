@@ -16,7 +16,7 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'Ilość namiotów na kempingu',
+                label: 'Ilość ludzi na kempingu',
                 data: [
                     {% for data in population_data %}
                         {{ data.total_people }},
