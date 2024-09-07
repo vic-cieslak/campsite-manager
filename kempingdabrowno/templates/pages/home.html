@@ -1,3 +1,102 @@
 {% extends "base.html" %}
 
+{% block content %}
+    <!-- Header Section -->
+    <header class="bg-cover bg-center h-screen" style="background-image: url('/static/images/camping_lake.jpg');">
+        <div class="bg-black bg-opacity-50 h-full flex flex-col justify-center items-center text-center">
+            <h1 class="text-white text-5xl font-bold mb-4">Camping Dąbrówno</h1>
+            <p class="text-white text-xl mb-8">Twoje miejsce na relaks, zabawę i kontakt z naturą</p>
+            <a href="#contact" class="bg-yellow-500 text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600">Zarezerwuj teraz</a>
+        </div>
+    </header>
 
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-8">Witamy na Campingu Dąbrówno</h2>
+            <p class="text-lg mb-6">Położony nad spokojnym jeziorem, Camping Dąbrówno to miejsce, gdzie znajdziesz zarówno spokój, jak i przygody. Nasza oferta obejmuje wygodne miejsca kempingowe, bogate w atrakcje wieczory przy ognisku oraz wyjątkową gościnność.</p>
+            <a href="#services" class="text-yellow-500 font-semibold">Poznaj więcej</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="feature-item">
+                    <i class="fas fa-tree fa-3x text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Bliskość natury</h3>
+                    <p class="text-gray-600">Camping położony nad jeziorem, z pięknymi zachodami słońca i dostępem do natury.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-fire-alt fa-3x text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Ogniska i Muzyka</h3>
+                    <p class="text-gray-600">Wieczorne ogniska, muzyka na żywo i DJ-e sprawiają, że atmosfera jest wyjątkowa.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-utensils fa-3x text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Pyszne Jedzenie</h3>
+                    <p class="text-gray-600">Świeżo wędzona ryba, domowe obiady i wyjątkowe desery dla prawdziwych smakoszy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8">Galeria</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <img src="/static/images/gallery_1.jpg" alt="Camping 1" class="rounded-lg shadow-md">
+                <img src="/static/images/gallery_2.jpg" alt="Camping 2" class="rounded-lg shadow-md">
+                <img src="/static/images/gallery_3.jpg" alt="Camping 3" class="rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8">Nasza Oferta</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="service-item">
+                    <i class="fas fa-bicycle fa-3x text-yellow-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Wynajem Sprzętu</h3>
+                    <p class="text-gray-600">Wynajmij rowery, kajaki, SUP-y oraz sprzęt do siatkówki i ciesz się aktywnym wypoczynkiem na świeżym powietrzu.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-music fa-3x text-yellow-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Imprezy i Eventy</h3>
+                    <p class="text-gray-600">Każdy weekend oferuje wyjątkowe atrakcje, w tym muzykę na żywo, DJ-ów oraz specjalne imprezy tematyczne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-100 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-8">Opinie Gości</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial">
+                    <p class="text-lg italic mb-4">"Najlepszy kemping, na jakim kiedykolwiek byliśmy! Czysto, komfortowo, a atmosfera wieczornych ognisk jest niezapomniana."</p>
+                    <h3 class="text-xl font-semibold">- Janusz i Katarzyna</h3>
+                </div>
+                <div class="testimonial">
+                    <p class="text-lg italic mb-4">"Przepiękne widoki, pyszne jedzenie i bardzo pomocni właściciele. Na pewno wrócimy z całą rodziną!"</p>
+                    <h3 class="text-xl font-semibold">- Anna</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-yellow-500 text-center text-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-8">Skontaktuj się z nami</h2>
+            <p class="text-lg mb-6">Zarezerwuj swój pobyt na Campingu Dąbrówno już dziś!</p>
+            <a href="mailto:kontakt@campingdabrowno.pl" class="bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800">Napisz do nas</a>
+        </div>
+    </section>
+
+{% endblock %}

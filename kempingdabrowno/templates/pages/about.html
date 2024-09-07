@@ -1,3 +1,97 @@
 {% extends "base.html" %}
 
+{% block content %}
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-96" style="background-image: url('/static/images/camping_lake.jpg');">
+        <div class="bg-black bg-opacity-60 h-full flex flex-col justify-center items-center text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">O nas - Camping Dąbrówno</h1>
+            <p class="text-xl mb-4">Twoje miejsce na relaks, przygodę i niezapomniane wspomnienia</p>
+        </div>
+    </section>
 
+    <!-- Welcome Section -->
+    <section class="py-16 bg-gray-100 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-8">Witamy na Campingu Dąbrówno</h2>
+            <p class="text-lg mb-6">Położony nad spokojnym jeziorem, Camping Dąbrówno oferuje idealne połączenie natury, komfortu i zabawy. Niezależnie od tego, czy szukasz relaksu, czy przygody, nasz kemping to doskonałe miejsce dla rodzin, par i przyjaciół. Od ognisk i muzyki na żywo po świeże, pyszne jedzenie i zapierające dech w piersiach zachody słońca – Twoje doświadczenie kempingowe będzie niezapomniane.</p>
+        </div>
+    </section>
+
+    <!-- Nature and Relaxation Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-3xl font-semibold mb-4">Relaksujący Wypoczynek na Łonie Natury</h3>
+                    <p class="text-lg mb-4">Camping Dąbrówno to miejsce pełne pięknych widoków na jezioro i spokojnych otoczeń. Niezależnie od tego, czy podziwiasz złocisty zachód słońca na naszej piaszczystej plaży, czy spacerujesz pośród zieleni, nasz kemping zapewnia spokojny i regenerujący odpoczynek z dala od zgiełku codziennego życia.</p>
+                </div>
+                <div>
+                    <img src="/static/images/nature_relax.jpg" alt="Relaks na łonie natury" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Quality Infrastructure Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <img src="/static/images/infrastructure.jpg" alt="Nowoczesna infrastruktura" class="rounded-lg shadow-md">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold mb-4">Wysokiej Jakości Infrastruktura</h3>
+                    <p class="text-lg mb-4">Na Campingu Dąbrówno dbamy o komfort naszych gości. Czyste, nowoczesne toalety i prysznice, przestronne miejsca kempingowe oraz wygodne miejsca do siedzenia sprawią, że Twój pobyt będzie przyjemny i bezproblemowy. Oferujemy również wypożyczalnię rowerów i kajaków, dzięki czemu zawsze jest coś ciekawego do zrobienia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun for Everyone Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-semibold mb-8">Zabawa dla Każdego</h3>
+            <p class="text-lg mb-6">Na Campingu Dąbrówno każdy znajdzie coś dla siebie. Miłośnicy wody mogą odkrywać jezioro na rowerach wodnych, kajakach lub deskach SUP, a dzieci mogą korzystać z placu zabaw i boiska do siatkówki. Wieczorne ogniska, muzyka na żywo i sety DJ-skie tworzą przyjazną i integrującą atmosferę, sprzyjającą nawiązywaniu nowych znajomości i relaksowi.</p>
+            <img src="/static/images/fun_for_everyone.jpg" alt="Zabawa dla każdego" class="mx-auto rounded-lg shadow-md">
+        </div>
+    </section>
+
+    <!-- Friendly Staff Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-semibold text-center mb-8">Przyjazna i Pomocna Obsługa</h3>
+            <p class="text-lg text-center mb-6">Nasi goście niezmiennie chwalą serdeczność i życzliwość naszej obsługi. Od momentu przyjazdu, powitamy Cię z uśmiechem. Niezależnie od tego, czy potrzebujesz pomocy przy wypożyczeniu sprzętu, czy rekomendacji co do lokalnych atrakcji, nasz zespół jest zawsze gotowy, aby pomóc. Dbamy o to, aby każde doświadczenie naszych gości było pozytywne i niezapomniane.</p>
+        </div>
+    </section>
+
+    <!-- Delicious Food Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-semibold mb-8">Pyszne Jedzenie i Doskonała Gościnność</h3>
+            <p class="text-lg mb-6">Rozkoszuj się smakołykami w naszym barze, gdzie serwujemy świeżo wędzoną rybę, kebaby i przepyszne desery, takie jak domowa szarlotka z lodami. Nasza oferta kulinarna jest równie różnorodna, co dostępne atrakcje, co sprawia, że każdy posiłek to przyjemność.</p>
+            <img src="/static/images/food.jpg" alt="Pyszne jedzenie" class="mx-auto rounded-lg shadow-md">
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-semibold text-center mb-8">Weekendowe Wydarzenia i Muzyka na Żywo</h3>
+            <p class="text-lg text-center mb-6">Dla tych, którzy kochają zabawę i rozrywkę, organizujemy weekendowe wydarzenia z udziałem zespołów na żywo, DJ-ów i atrakcji kulturalnych. Każdego wieczoru goście gromadzą się przy naszym dużym ognisku, dzieląc się historiami i ciesząc się swobodną atmosferą. Te wydarzenia tworzą wspomnienia, które sprawiają, że goście wracają do nas rok po roku.</p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-semibold mb-8">Dlaczego Wybrać Camping Dąbrówno?</h3>
+            <ul class="list-disc list-inside text-lg text-left inline-block">
+                <li class="mb-2"><strong>Piękne położenie w naturze</strong>, z dostępem do jeziora i zapierającymi dech w piersiach zachodami słońca</li>
+                <li class="mb-2"><strong>Czyste i nowoczesne udogodnienia</strong>, w tym toalety i prysznice z ciepłą wodą</li>
+                <li class="mb-2"><strong>Zabawa i przygoda</strong>, od sportów wodnych po wieczorne ogniska</li>
+                <li class="mb-2"><strong>Przyjazna i pomocna obsługa</strong>, która dba o Twój komfort</li>
+                <li><strong>Pyszne jedzenie</strong> i żywe wydarzenia towarzyskie co weekend</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
