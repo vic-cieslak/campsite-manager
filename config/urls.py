@@ -8,6 +8,9 @@ from kempingdabrowno.users.views import camping_population_chart_view
 from kempingdabrowno.users.views import current_occupancy_view
 from kempingdabrowno.users.views import create_reservation_view
 from kempingdabrowno.users.views import reservation_success_view
+from kempingdabrowno.users.views import my_reservations_view
+from kempingdabrowno.users.views import reservation_detail_view
+from kempingdabrowno.users.views import cancel_reservation_view
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -21,6 +24,9 @@ urlpatterns = [
     path('obecne-oblozenie/', current_occupancy_view, name='obecne_oblozenie'),
     path('rezerwuj/', create_reservation_view, name='create_reservation'),
     path('rezerwacja-sukces/', reservation_success_view, name='reservation_success'),
+    path('moje-rezerwacje/', my_reservations_view, name='my_reservations'),
+    path('rezerwacja/<int:id>/', reservation_detail_view, name='reservation_detail'),
+    path('rezerwacja/<int:id>/cancel/', cancel_reservation_view, name='cancel_reservation'),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mx-auto mt-4">
+    <h1 class="text-2xl font-semibold mb-4">{% trans "My Reservations" %}</h1>
+
+    {% if reservations %}
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">{% trans "Start Date" %}</th>
+                    <th class="px-4 py-2">{% trans "End Date" %}</th>
+                    <th class="px-4 py-2">{% trans "Number of Adults" %}</th>
+                    <th class="px-4 py-2">{% trans "Number of Children" %}</th>
+                    <th class="px-4 py-2">{% trans "Status" %}</th>
+                    <th class="px-4 py-2">{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td class="border px-4 py-2">{{ reservation.start_date }}</td>
+                    <td class="border px-4 py-2">{{ reservation.end_date }}</td>
+                    <td class="border px-4 py-2">{{ reservation.num_adults }}</td>
+                    <td class="border px-4 py-2">{{ reservation.total_children }}</td>
+                    <td class="border px-4 py-2">
+                        {% if reservation.is_confirmed %}
+                            {% trans "Confirmed" %}
+                        {% else %}
+                            {% trans "Pending" %}
+                        {% endif %}
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="{% url 'reservation_detail' reservation.id %}" class="text-blue-500">{% trans "View" %}</a> |
+                        <a href="{% url 'cancel_reservation' reservation.id %}" class="text-red-500">{% trans "Cancel" %}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "You have no reservations." %}</p>
+    {% endif %}
+</div>
+{% endblock %}

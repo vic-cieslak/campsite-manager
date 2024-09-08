@@ -11,7 +11,8 @@ from django.utils import timezone
 from .models import ReservationInquiry
 from datetime import timedelta
 from .forms import ReservationInquiryForm
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 User = get_user_model()
 
 
@@ -134,6 +135,7 @@ def create_reservation_view(request):
             print('form valid!')
             # Create a ReservationInquiry object from form data
             reservation = ReservationInquiry(
+                user=request.user,
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
                 phone_number=form.cleaned_data['phone_number'],
@@ -170,3 +172,41 @@ def create_reservation_view(request):
 
 def reservation_success_view(request):
     return render(request, 'pages/reservation_success.html')
+
+
+
+@login_required
+def my_reservations_view(request):
+    user_reservations = ReservationInquiry.objects.filter(user=request.user).order_by('-start_date')
+
+    # Add a calculated field for total children in each reservation
+    for reservation in user_reservations:
+        reservation.total_children = reservation.num_children_0_3 + reservation.num_children_4_13
+
+    context = {
+        'reservations': user_reservations,
+    }
+    return render(request, 'pages/my_reservations.html', context)
+
+def reservation_detail_view(request, id):
+    reservation = ReservationInquiry.objects.get(id=id, user=request.user)
+    context = {
+        'reservation': reservation,
+    }
+    return render(request, 'pages/reservation_detail.html', context)
+
+
+@login_required
+def cancel_reservation_view(request, id):
+    reservation = ReservationInquiry.objects.get(id=id, user=request.user)
+
+    if request.method == 'POST':
+        reservation.is_canceled = True
+        reservation.save()
+        messages.success(request, 'Your reservation has been canceled.')
+        return redirect('my_reservations')
+
+    context = {
+        'reservation': reservation,
+    }
+    return render(request, 'pages/cancel_reservation_confirm.html', context)

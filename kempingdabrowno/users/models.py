@@ -35,6 +35,7 @@ class User(AbstractUser):
 
 
 class ReservationInquiry(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="reservations")
     # Basic information
     full_name = models.CharField(max_length=255, verbose_name=_("Imię i nazwisko"))
     email = models.EmailField(verbose_name=_("Email"))
@@ -93,7 +94,7 @@ class ReservationInquiry(models.Model):
     def calculate_total_cost(self):
         # Placeholder: You would implement the logic to calculate total cost based on options selected.
         pass
-        
+
     class Meta:
         verbose_name = _("Rezerwacja")
         verbose_name_plural = _("Rezerwacje")

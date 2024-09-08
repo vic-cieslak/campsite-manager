@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mx-auto mt-4">
+    <h1 class="text-2xl font-semibold mb-4">{% trans "Reservation Details" %}</h1>
+
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-xl font-semibold mb-4">{{ reservation.full_name }}</h2>
+        <p><strong>{% trans "Reservation ID:" %}</strong> {{ reservation.id }}</p>
+        <p><strong>{% trans "Start Date:" %}</strong> {{ reservation.start_date }}</p>
+        <p><strong>{% trans "End Date:" %}</strong> {{ reservation.end_date }}</p>
+        <p><strong>{% trans "Number of Adults:" %}</strong> {{ reservation.num_adults }}</p>
+        <p><strong>{% trans "Number of Children (0-3 years):" %}</strong> {{ reservation.num_children_0_3 }}</p>
+        <p><strong>{% trans "Number of Children (4-13 years):" %}</strong> {{ reservation.num_children_4_13 }}</p>
+        <p><strong>{% trans "Number of Animals:" %}</strong> {{ reservation.num_animals }}</p>
+        <p><strong>{% trans "Tent Type:" %}</strong> 
+            {% if reservation.tent_type %}
+                {{ reservation.get_tent_type_display }}
+            {% else %}
+                {% trans "No tent required" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Caravan Required:" %}</strong> 
+            {% if reservation.caravan_required %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Electricity for Tent:" %}</strong> 
+            {% if reservation.electricity_for_tent %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Electricity for Caravan:" %}</strong> 
+            {% if reservation.electricity_for_caravan %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Extra Person Count:" %}</strong> {{ reservation.extra_person_count }}</p>
+        <p><strong>{% trans "Waste Disposal:" %}</strong> 
+            {% if reservation.waste_disposal %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Parking Required:" %}</strong> 
+            {% if reservation.parking_required %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Number of Adults at Beach:" %}</strong> {{ reservation.num_beach_stay_adults }}</p>
+        <p><strong>{% trans "Number of Children at Beach:" %}</strong> {{ reservation.num_beach_stay_children }}</p>
+        <p><strong>{% trans "Discount Applied:" %}</strong> 
+            {% if reservation.apply_discount %}
+                {% trans "Yes" %}
+            {% else %}
+                {% trans "No" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Reservation Status:" %}</strong> 
+            {% if reservation.is_confirmed %}
+                {% trans "Confirmed" %}
+            {% else %}
+                {% trans "Pending" %}
+            {% endif %}
+        </p>
+        <p><strong>{% trans "Cancellation Status:" %}</strong> 
+            {% if reservation.is_canceled %}
+                {% trans "Canceled" %}
+            {% else %}
+                {% trans "Active" %}
+            {% endif %}
+        </p>
+    </div>
+
+    <a href="{% url 'my_reservations' %}" class="text-blue-500">{% trans "Back to My Reservations" %}</a>
+</div>
+{% endblock %}

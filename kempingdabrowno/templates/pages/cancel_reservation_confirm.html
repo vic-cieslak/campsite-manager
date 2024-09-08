@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mx-auto mt-4">
+    <h1 class="text-2xl font-semibold mb-4">{% trans "Cancel Reservation" %}</h1>
+    <p>{% trans "Are you sure you want to cancel your reservation for" %} {{ reservation.start_date }} {% trans "to" %} {{ reservation.end_date }}?</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            {% trans "Yes, Cancel Reservation" %}
+        </button>
+        <a href="{% url 'my_reservations' %}" class="text-blue-500 ml-4">{% trans "No, go back" %}</a>
+    </form>
+</div>
+{% endblock %}
