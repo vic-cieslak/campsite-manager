@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-
-
     <h1>Obłożenie kempingu na następne 30 dni</h1>
     <canvas id="populationChart" width="400" height="200"></canvas>
 
@@ -11,7 +8,7 @@
     <script>
         const labels = [
             {% for data in population_data %}
-                "{{ data.date }}",
+                "{{ data.date|date:'l, d F' }}",  <!-- Formats to 'Day name, Day Month' -->
             {% endfor %}
         ];
         
@@ -31,7 +28,7 @@
         };
 
         const config = {
-            type: 'line',  // Changed from 'line' to 'bar'
+            type: 'bar',
             data: data,
             options: {
                 scales: {

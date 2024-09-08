@@ -371,7 +371,7 @@ UNFOLD = {
                     {
                         "title": "Panel",
                         "icon": "dashboard",
-                        "link": reverse_lazy("admin:index"),
+                        "link": reverse_lazy("admin:users_reservationinquiry_changelist"),
                     },
                     {
                         "title": "Rezerwacje",

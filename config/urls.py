@@ -27,6 +27,7 @@ urlpatterns = [
     path('moje-rezerwacje/', my_reservations_view, name='my_reservations'),
     path('rezerwacja/<int:id>/', reservation_detail_view, name='reservation_detail'),
     path('rezerwacja/<int:id>/cancel/', cancel_reservation_view, name='cancel_reservation'),
+    path('i18n/', include('django.conf.urls.i18n')),  # Add this
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

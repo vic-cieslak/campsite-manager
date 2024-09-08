@@ -66,6 +66,8 @@
 
 
 <!-- Bootstrap JS -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script defer
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
         integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
@@ -80,7 +82,6 @@
 
 
 <!-- place project specific Javascript in this file -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script defer src="{% static 'js/project.js' %}"></script>
 
@@ -130,8 +131,20 @@
               {% endif %}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownLanguageButton">
-              <li><a class="dropdown-item" href="?language=en">EN</a></li>
-              <li><a class="dropdown-item" href="?language=pl">PL</a></li>
+              <li>
+                <form action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ request.path }}">
+                  <button class="dropdown-item" type="submit" name="language" value="en">EN</button>
+                </form>
+              </li>
+              <li>
+                <form action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ request.path }}">
+                  <button class="dropdown-item" type="submit" name="language" value="pl">PL</button>
+                </form>
+              </li>
             </ul>
           </div>
           <div>
