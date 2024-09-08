@@ -53,6 +53,6 @@ class UserAdmin(ModelAdmin):
 
 @admin.register(ReservationInquiry)
 class ReservationInquiryAdmin(ModelAdmin):
-    list_display = ['full_name', 'start_date', 'end_date', 'is_confirmed', 'is_canceled']
+    list_display = ['inquiry_date', 'full_name', 'start_date', 'end_date', 'is_confirmed', 'is_canceled']
     list_filter = ['is_confirmed', 'is_canceled', 'start_date', 'end_date']
     search_fields = ['full_name', 'email']

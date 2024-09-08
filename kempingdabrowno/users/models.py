@@ -93,3 +93,7 @@ class ReservationInquiry(models.Model):
     def calculate_total_cost(self):
         # Placeholder: You would implement the logic to calculate total cost based on options selected.
         pass
+        
+    class Meta:
+        verbose_name = _("Rezerwacja")
+        verbose_name_plural = _("Rezerwacje")

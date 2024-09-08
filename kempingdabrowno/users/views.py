@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
 
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import ReservationInquiry
 from datetime import timedelta
@@ -127,21 +127,46 @@ def current_occupancy_view(request):
     }
     return render(request, 'pages/current_occupancy_chart.html', context)
 
-
-
-
 def create_reservation_view(request):
     if request.method == 'POST':
         form = ReservationInquiryForm(request.POST)
         if form.is_valid():
-            reservation = form.save(commit=False)
-            reservation.is_confirmed = False  # Initially not confirmed
+            print('form valid!')
+            # Create a ReservationInquiry object from form data
+            reservation = ReservationInquiry(
+                full_name=form.cleaned_data['full_name'],
+                email=form.cleaned_data['email'],
+                phone_number=form.cleaned_data['phone_number'],
+                start_date=form.cleaned_data['start_date'],
+                end_date=form.cleaned_data['end_date'],
+                num_adults=form.cleaned_data['num_adults'],
+                num_children_0_3=form.cleaned_data['num_children_0_3'],
+                num_children_4_13=form.cleaned_data['num_children_4_13'],
+                num_animals=form.cleaned_data.get('num_animals', 0),  # Optional field
+                tent_type=form.cleaned_data.get('tent_type', None),
+                caravan_required=form.cleaned_data.get('caravan_required', False),
+                electricity_for_tent=form.cleaned_data.get('electricity_for_tent', False),
+                electricity_for_caravan=form.cleaned_data.get('electricity_for_caravan', False),
+                extra_person_count=form.cleaned_data.get('extra_person_count', 0),
+                waste_disposal=form.cleaned_data.get('waste_disposal', False),
+                parking_required=form.cleaned_data.get('parking_required', False),
+                num_beach_stay_adults=form.cleaned_data.get('num_beach_stay_adults', 0),
+                num_beach_stay_children=form.cleaned_data.get('num_beach_stay_children', 0),
+                apply_discount=form.cleaned_data.get('apply_discount', False),
+                is_confirmed=False  # Initially not confirmed
+            )
+            # Save the reservation
             reservation.save()
+
+            # Redirect to the success page after saving the reservation
             return redirect(reverse('reservation_success'))
+        else:
+            print(form.errors)
     else:
         form = ReservationInquiryForm()
 
     return render(request, 'pages/create_reservation.html', {'form': form})
+
 
 def reservation_success_view(request):
     return render(request, 'pages/reservation_success.html')

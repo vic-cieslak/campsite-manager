@@ -86,7 +86,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
                 <div>
                     {{ form.num_adults|as_crispy_field }} 
-                    <input type="hidden" id="price_per_adult" value="50">
+                    <input type="hidden" id="price_per_adult" value="22">
                 </div>
                 <div>
                     {{ form.num_children_0_3|as_crispy_field }}
@@ -94,7 +94,7 @@
                 </div>
                 <div>
                     {{ form.num_children_4_13|as_crispy_field }}
-                    <input type="hidden" id="price_per_child_4_13" value="30">
+                    <input type="hidden" id="price_per_child_4_13" value="15">
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
                 </div>
                 <div>
                     {{ form.caravan_required|as_crispy_field }}
-                    <input type="hidden" id="price_for_caravan" value="100">
+                    <input type="hidden" id="price_for_caravan" value="45">
                 </div>
             </div>
 
@@ -123,7 +123,7 @@
                 </div>
                 <div>
                     {{ form.extra_person_count|as_crispy_field }}
-                    <input type="hidden" id="price_per_extra_person" value="40">
+                    <input type="hidden" id="price_per_extra_person" value="7">
                 </div>
             </div>
 
@@ -149,6 +149,15 @@
                 </div>
             </div>
 
+            <!-- Num animals -->
+            <hr class="my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+                <div>
+                    {{ form.num_animals|as_crispy_field }}
+                </div>
+               
+            </div>
+
             <!-- Discount -->
             <div class="mb-6 max-w-sm mx-auto">
                 {{ form.apply_discount|as_crispy_field }}
@@ -158,7 +167,7 @@
             <div id="floatingContainer">
                 <!-- Total Price -->
                 <div id="totalPriceBox" class="floating-box">
-                    <h5>Cena końcowa: <span id="totalPrice">0</span> PLN</h5>
+                    <h5>Cena końcowa: <br><span id="totalPrice">0</span> PLN</h5>
                 </div>
             
                 <!-- Reservation Button -->
@@ -174,88 +183,111 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // Get the actual rendered input IDs for start_date and end_date
-            const startDateInput = document.getElementById('{{ form.start_date.auto_id }}');
-            const endDateInput = document.getElementById('{{ form.end_date.auto_id }}');
-            
-            // Initialize Flatpickr on the start_date field
-            flatpickr(startDateInput, {
-                dateFormat: "Y-m-d",
-                minDate: "today",
-                onChange: function(selectedDates, dateStr, instance) {
-                    // Set the minimum date of the end date based on the start date
-                    flatpickr(endDateInput, {
-                        dateFormat: "Y-m-d",
-                        minDate: dateStr
-                    });
-                }
-            });
+        // Get the actual rendered input IDs for start_date and end_date
+        const startDateInput = document.getElementById('{{ form.start_date.auto_id }}');
+        const endDateInput = document.getElementById('{{ form.end_date.auto_id }}');
 
-            // Initialize Flatpickr on the end_date field with today's date as the minimum
-            flatpickr(endDateInput, {
-                dateFormat: "Y-m-d",
-                minDate: "today"
-            });
+        // Initialize Flatpickr on the start_date field
+        flatpickr(startDateInput, {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr, instance) {
+                // Set the minimum date of the end date based on the start date
+                flatpickr(endDateInput, {
+                    dateFormat: "Y-m-d",
+                    minDate: dateStr
+                });
+                calculateTotalPrice();  // Recalculate price when start date changes
+            }
+        });
 
+        // Initialize Flatpickr on the end_date field with today's date as the minimum
+        flatpickr(endDateInput, {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr, instance) {
+                calculateTotalPrice();  // Recalculate price when end date changes
+            }
+        });
 
-            const totalPriceEl = document.getElementById('totalPrice');
+        const totalPriceEl = document.getElementById('totalPrice');
 
-            const numAdults = document.getElementById('{{ form.num_adults.id_for_label }}');
-            const numChildren0_3 = document.getElementById('{{ form.num_children_0_3.id_for_label }}');
-            const numChildren4_13 = document.getElementById('{{ form.num_children_4_13.id_for_label }}');
-            const caravanRequired = document.getElementById('{{ form.caravan_required.id_for_label }}');
-            const electricityForTent = document.getElementById('{{ form.electricity_for_tent.id_for_label }}');
-            const electricityForCaravan = document.getElementById('{{ form.electricity_for_caravan.id_for_label }}');
-            const extraPersonCount = document.getElementById('{{ form.extra_person_count.id_for_label }}');
+        const numAdults = document.getElementById('{{ form.num_adults.id_for_label }}');
+        const numChildren0_3 = document.getElementById('{{ form.num_children_0_3.id_for_label }}');
+        const numChildren4_13 = document.getElementById('{{ form.num_children_4_13.id_for_label }}');
+        const caravanRequired = document.getElementById('{{ form.caravan_required.id_for_label }}');
+        const electricityForTent = document.getElementById('{{ form.electricity_for_tent.id_for_label }}');
+        const electricityForCaravan = document.getElementById('{{ form.electricity_for_caravan.id_for_label }}');
+        const extraPersonCount = document.getElementById('{{ form.extra_person_count.id_for_label }}');
 
-            function calculateTotalPrice() {
-                let totalPrice = 0;
+        function calculateDays() {
+            const startDateValue = startDateInput.value ? new Date(startDateInput.value) : null;
+            const endDateValue = endDateInput.value ? new Date(endDateInput.value) : null;
 
-                const pricePerAdult = parseInt(document.getElementById('price_per_adult').value);
-                const pricePerChild0_3 = parseInt(document.getElementById('price_per_child_0_3').value);
-                const pricePerChild4_13 = parseInt(document.getElementById('price_per_child_4_13').value);
-                const priceForCaravan = parseInt(document.getElementById('price_for_caravan').value);
-                const priceForElectricityTent = parseInt(document.getElementById('price_for_electricity_tent').value);
-                const priceForElectricityCaravan = parseInt(document.getElementById('price_for_electricity_caravan').value);
-                const pricePerExtraPerson = parseInt(document.getElementById('price_per_extra_person').value);
+            if (startDateValue && endDateValue && endDateValue > startDateValue) {
+                // Calculate the number of days between the start and end date
+                const diffTime = Math.abs(endDateValue - startDateValue);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Milliseconds to days
+                return diffDays;
+            }
+            return 1; // Default to 1 day if dates are invalid
+        }
 
-                // Adults
-                totalPrice += (numAdults.value ? parseInt(numAdults.value) * pricePerAdult : 0);
+        function calculateTotalPrice() {
+            let totalPrice = 0;
 
-                // Children 0-3
-                totalPrice += (numChildren0_3.value ? parseInt(numChildren0_3.value) * pricePerChild0_3 : 0);
+            const pricePerAdult = parseInt(document.getElementById('price_per_adult').value);
+            const pricePerChild0_3 = parseInt(document.getElementById('price_per_child_0_3').value);
+            const pricePerChild4_13 = parseInt(document.getElementById('price_per_child_4_13').value);
+            const priceForCaravan = parseInt(document.getElementById('price_for_caravan').value);
+            const priceForElectricityTent = parseInt(document.getElementById('price_for_electricity_tent').value);
+            const priceForElectricityCaravan = parseInt(document.getElementById('price_for_electricity_caravan').value);
+            const pricePerExtraPerson = parseInt(document.getElementById('price_per_extra_person').value);
 
-                // Children 4-13
-                totalPrice += (numChildren4_13.value ? parseInt(numChildren4_13.value) * pricePerChild4_13 : 0);
+            // Adults
+            totalPrice += (numAdults.value ? parseInt(numAdults.value) * pricePerAdult : 0);
 
-                // Extra person
-                totalPrice += (extraPersonCount.value ? parseInt(extraPersonCount.value) * pricePerExtraPerson : 0);
+            // Children 0-3
+            totalPrice += (numChildren0_3.value ? parseInt(numChildren0_3.value) * pricePerChild0_3 : 0);
 
-                // Caravan
-                if (caravanRequired.checked) {
-                    totalPrice += priceForCaravan;
-                }
+            // Children 4-13
+            totalPrice += (numChildren4_13.value ? parseInt(numChildren4_13.value) * pricePerChild4_13 : 0);
 
-                // Electricity for tent
-                if (electricityForTent.checked) {
-                    totalPrice += priceForElectricityTent;
-                }
+            // Extra person
+            totalPrice += (extraPersonCount.value ? parseInt(extraPersonCount.value) * pricePerExtraPerson : 0);
 
-                // Electricity for caravan
-                if (electricityForCaravan.checked) {
-                    totalPrice += priceForElectricityCaravan;
-                }
-
-                totalPriceEl.textContent = totalPrice;
+            // Caravan
+            if (caravanRequired.checked) {
+                totalPrice += priceForCaravan;
             }
 
-            // Add event listeners to form inputs
-            [numAdults, numChildren0_3, numChildren4_13, extraPersonCount, caravanRequired, electricityForTent, electricityForCaravan].forEach(input => {
-                input.addEventListener('change', calculateTotalPrice);
-            });
+            // Electricity for tent
+            if (electricityForTent.checked) {
+                totalPrice += priceForElectricityTent;
+            }
 
-            // Initial calculation on page load
-            calculateTotalPrice();
+            // Electricity for caravan
+            if (electricityForCaravan.checked) {
+                totalPrice += priceForElectricityCaravan;
+            }
+
+            // Get the number of days
+            const numDays = calculateDays();
+
+            // Multiply the total price by the number of days
+            totalPrice *= numDays;
+
+            totalPriceEl.textContent = totalPrice;
+        }
+
+        // Add event listeners to form inputs
+        [numAdults, numChildren0_3, numChildren4_13, extraPersonCount, caravanRequired, electricityForTent, electricityForCaravan, startDateInput, endDateInput].forEach(input => {
+            input.addEventListener('change', calculateTotalPrice);
         });
+
+        // Initial calculation on page load
+        calculateTotalPrice();
+        });
+
     </script>
 {% endblock %}
