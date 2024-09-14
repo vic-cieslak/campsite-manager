@@ -26,7 +26,6 @@ class Command(BaseCommand):
             # Adjust this logic if your custom User model has different fields
             user, created = User.objects.get_or_create(
                 email=email,  # Ensure the field names match your User model
-                defaults={'username': email}  # Add any required fields here, like 'username'
             )
             users.append(user)
 
