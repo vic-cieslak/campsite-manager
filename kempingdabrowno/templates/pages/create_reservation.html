@@ -4,185 +4,292 @@
 {% block content %}
 <style>
     #floatingContainer {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px; /* Space between the button and the price */
-      z-index: 1000;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        /* Space between the button and the price */
+        z-index: 1000;
     }
-  
+
     .floating-box {
-      background-color: #1e40af; /* Tailwind's blue-600 */
-      color: white;
-      padding: 16px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      font-size: 18px;
-      font-weight: 600;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 200px; /* Set equal width */
-      height: 60px; /* Set equal height */
+        background-color: #1e40af;
+        /* Tailwind's blue-600 */
+        color: white;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        /* Set equal width */
+        height: 60px;
+        /* Set equal height */
     }
-  
+
     #reservationButton {
-      background-color: #38af1e; /* Tailwind's blue-600 */
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 200px; /* Set equal width */
-      height: 60px; /* Set equal height */
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        background-color: #38af1e;
+        /* Tailwind's blue-600 */
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 200px;
+        /* Set equal width */
+        height: 60px;
+        /* Set equal height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-  
+
     #reservationButton:hover {
-      background-color: #1d4ed8; /* Hover color */
+        background-color: #1d4ed8;
+        /* Hover color */
     }
-  </style>
+
+    /* Hide default number input arrows */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+        /* Firefox */
+    }
+
+    .custom-number-input {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .increment,
+    .decrement {
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <div class="container mx-auto mt-4 mb-32 px-4 md:px-0">
-        <h1 class="text-2xl font-semibold mb-4 text-center">Zarezerwuj miejsce na kempingu</h1>
-        <form method="post" class="needs-validation" novalidate id="reservationForm">
-            {% csrf_token %}
-            
-            <!-- User Info -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.full_name|as_crispy_field }}
+<div class="container mx-auto mt-4 mb-32 px-4 md:px-0">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Zarezerwuj miejsce na kempingu</h1>
+    <form method="post" class="needs-validation" novalidate id="reservationForm">
+        {% csrf_token %}
+
+        <!-- User Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+            <div>
+                {{ form.full_name|as_crispy_field }}
+            </div>
+            <div>
+                {{ form.email|as_crispy_field }}
+            </div>
+            <div>
+                {{ form.phone_number|as_crispy_field }}
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+            <div>
+                {{ form.start_date|as_crispy_field }}
+            </div>
+            <div>
+                {{ form.end_date|as_crispy_field }}
+            </div>
+        </div>
+
+        <!-- Number of People -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
+            <div class="custom-number-input">
+                <label for="num_adults" class="block text-gray-700">Liczba dorosłych</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_num_adults" name="num_adults" value="{{ form.num_adults.value }}"
+                        min="1" max="10" class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
                 </div>
-                <div>
-                    {{ form.email|as_crispy_field }}
+                <input type="hidden" id="price_per_adult" value="22">
+            </div>
+            <div class="custom-number-input">
+                <label for="num_children_0_3" class="block text-gray-700">Liczba dzieci (0-3)</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_num_children_0_3" name="num_children_0_3"
+                        value="{{ form.num_children_0_3.value }}" min="0" max="10"
+                        class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
                 </div>
-                <div>
-                    {{ form.phone_number|as_crispy_field }}
+                <input type="hidden" id="price_per_child_0_3" value="0">
+            </div>
+            <div class="custom-number-input">
+                <label for="num_children_4_13" class="block text-gray-700">Liczba dzieci (4-13)</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_num_children_4_13" name="num_children_4_13"
+                        value="{{ form.num_children_4_13.value }}" min="0" max="10"
+                        class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+                </div>
+                <input type="hidden" id="price_per_child_4_13" value="15">
+            </div>
+        </div>
+
+        <!-- Camping Details -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+            <div>
+                {{ form.tent_type|as_crispy_field }}
+            </div>
+            <div>
+                {{ form.caravan_required|as_crispy_field }}
+                <input type="hidden" id="price_for_caravan" value="45">
+            </div>
+        </div>
+
+        <!-- Electricity and Extras -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
+            <div>
+                {{ form.electricity_for_tent|as_crispy_field }}
+                <input type="hidden" id="price_for_electricity_tent" value="20">
+            </div>
+            <div>
+                {{ form.electricity_for_caravan|as_crispy_field }}
+                <input type="hidden" id="price_for_electricity_caravan" value="30">
+            </div>
+            <div class="custom-number-input">
+                <label for="extra_person_count" class="block text-gray-700">Liczba dodatkowych osób</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_extra_person_count" name="extra_person_count"
+                        value="{{ form.extra_person_count.value }}" min="0" max="10" step="1"
+                        class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+                </div>
+                <input type="hidden" id="price_per_extra_person" value="7">
+            </div>
+        </div>
+
+        <!-- Additional Services -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+            <div>
+                {{ form.waste_disposal|as_crispy_field }}
+            </div>
+            <div>
+                {{ form.parking_required|as_crispy_field }}
+            </div>
+        </div>
+
+        <!-- Beach Stay -->
+        <hr class="my-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
+            <div class="custom-number-input">
+                <label for="num_beach_stay_adults" class="block text-gray-700">Liczba dorosłych na plaży</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_num_beach_stay_adults" name="num_beach_stay_adults"
+                        value="{{ form.num_beach_stay_adults.value }}" min="0" max="10" step="1"
+                        class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
                 </div>
             </div>
-
-            <!-- Dates -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.start_date|as_crispy_field }}
-                </div>
-                <div>
-                    {{ form.end_date|as_crispy_field }}
-                </div>
-            </div>
-
-            <!-- Number of People -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.num_adults|as_crispy_field }} 
-                    <input type="hidden" id="price_per_adult" value="22">
-                </div>
-                <div>
-                    {{ form.num_children_0_3|as_crispy_field }}
-                    <input type="hidden" id="price_per_child_0_3" value="0">
-                </div>
-                <div>
-                    {{ form.num_children_4_13|as_crispy_field }}
-                    <input type="hidden" id="price_per_child_4_13" value="15">
+            <div class="custom-number-input">
+                <label for="num_beach_stay_children" class="block text-gray-700">Liczba dzieci na plaży</label>
+                <div class="flex items-center">
+                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                    <input type="number" id="id_num_beach_stay_children" name="num_beach_stay_children"
+                        value="{{ form.num_beach_stay_children.value }}" min="0" max="10" step="1"
+                        class="text-center w-12 border-t border-b border-gray-300" readonly>
+                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Camping Details -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.tent_type|as_crispy_field }}
-                </div>
-                <div>
-                    {{ form.caravan_required|as_crispy_field }}
-                    <input type="hidden" id="price_for_caravan" value="45">
-                </div>
+        <!-- Num animals -->
+        <hr class="my-4">
+        <div class="custom-number-input">
+            <label for="num_animals" class="block text-gray-700">Liczba zwierząt</label>
+            <div class="flex items-center">
+                <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
+                <input type="number" id="id_num_animals" name="num_animals" value="{{ form.num_animals.value }}" min="0"
+                    max="5" step="1" class="text-center w-12 border-t border-b border-gray-300" readonly>
+                <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+            </div>
+        </div>
+
+        <!-- Discount -->
+        <div class="mb-6 max-w-sm mx-auto">
+            {{ form.apply_discount|as_crispy_field }}
+        </div>
+
+        <div id="floatingContainer">
+            <!-- Total Price -->
+            <div id="totalPriceBox" class="floating-box">
+                <h5>Cena końcowa: <br><span id="totalPrice">0</span> PLN</h5>
             </div>
 
-            <!-- Electricity and Extras -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.electricity_for_tent|as_crispy_field }}
-                    <input type="hidden" id="price_for_electricity_tent" value="20">
-                </div>
-                <div>
-                    {{ form.electricity_for_caravan|as_crispy_field }}
-                    <input type="hidden" id="price_for_electricity_caravan" value="30">
-                </div>
-                <div>
-                    {{ form.extra_person_count|as_crispy_field }}
-                    <input type="hidden" id="price_per_extra_person" value="7">
-                </div>
-            </div>
+            <!-- Reservation Button -->
+            <button id="reservationButton" type="submit">
+                Zarezerwuj
+            </button>
+        </div>
+    </form>
 
-            <!-- Additional Services -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.waste_disposal|as_crispy_field }}
-                </div>
-                <div>
-                    {{ form.parking_required|as_crispy_field }}
-                </div>
-            </div>
 
-            <!-- Beach Stay -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.num_beach_stay_adults|as_crispy_field }}
-                </div>
-                <div>
-                    {{ form.num_beach_stay_children|as_crispy_field }}
-                </div>
-            </div>
 
-            <!-- Num animals -->
-            <hr class="my-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-                <div>
-                    {{ form.num_animals|as_crispy_field }}
-                </div>
-               
-            </div>
+</div>
 
-            <!-- Discount -->
-            <div class="mb-6 max-w-sm mx-auto">
-                {{ form.apply_discount|as_crispy_field }}
-            </div>
-            
-           
-            <div id="floatingContainer">
-                <!-- Total Price -->
-                <div id="totalPriceBox" class="floating-box">
-                    <h5>Cena końcowa: <br><span id="totalPrice">0</span> PLN</h5>
-                </div>
-            
-                <!-- Reservation Button -->
-                <button id="reservationButton" type="submit">
-                    Zarezerwuj
-                </button>
-            </div>
-            <!-- Submit Button -->
-         
-        </form>
-    </div>
+<script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
 
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Add event listeners to increment and decrement buttons
+        document.querySelectorAll('.increment').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const input = this.previousElementSibling;
+                if (input && input.type === "number") {
+                    const value = parseInt(input.value);
+                    const max = parseInt(input.max);
+                    if (value < max) {
+                        input.value = value + 1;
+                        input.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.decrement').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const input = this.nextElementSibling;
+                if (input && input.type === "number") {
+                    const value = parseInt(input.value);
+                    const min = parseInt(input.min);
+                    if (value > min) {
+                        input.value = value - 1;
+                        input.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+        });
         // Get the actual rendered input IDs for start_date and end_date
         const startDateInput = document.getElementById('{{ form.start_date.auto_id }}');
         const endDateInput = document.getElementById('{{ form.end_date.auto_id }}');
@@ -191,7 +298,7 @@
         flatpickr(startDateInput, {
             dateFormat: "Y-m-d",
             minDate: "today",
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function (selectedDates, dateStr, instance) {
                 // Set the minimum date of the end date based on the start date
                 flatpickr(endDateInput, {
                     dateFormat: "Y-m-d",
@@ -205,7 +312,7 @@
         flatpickr(endDateInput, {
             dateFormat: "Y-m-d",
             minDate: "today",
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function (selectedDates, dateStr, instance) {
                 calculateTotalPrice();  // Recalculate price when end date changes
             }
         });
@@ -287,7 +394,7 @@
 
         // Initial calculation on page load
         calculateTotalPrice();
-        });
+    });
 
-    </script>
+</script>
 {% endblock %}
