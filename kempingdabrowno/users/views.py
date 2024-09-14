@@ -215,3 +215,8 @@ def cancel_reservation_view(request, id):
         'reservation': reservation,
     }
     return render(request, 'pages/cancel_reservation_confirm.html', context)
+
+
+def dashboard_callback(request, context):
+    # You can modify the context here if needed
+    return context

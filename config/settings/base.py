@@ -335,7 +335,7 @@ UNFOLD = {
     #     "dark": lambda request: static("Logo-blanco.svg"),  # dark mode
     # },
     "SITE_SYMBOL": "book_online",  # Icon symbol for the site
-    "DASHBOARD_CALLBACK": "users.views.dashboard_callback",  # Customize with your app's view
+    # "DASHBOARD_CALLBACK": "users.views.dashboard_callback",  # Customize with your app's view
     # "LOGIN": {
     #     "image": lambda r: static("Logo-original.svg"),
     # },
