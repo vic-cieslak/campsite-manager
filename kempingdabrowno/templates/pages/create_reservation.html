@@ -107,13 +107,16 @@
         <hr class="my-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
             <div>
-                {{ form.start_date|as_crispy_field }}
+                <label for="start_date" class="block text-gray-700">Data rozpoczęcia</label>
+                <input type="text" id="id_start_date" name="start_date" value="{{ form.start_date.value }}"
+                    class="flatpickr text-center w-full border-t border-b border-gray-300">
             </div>
             <div>
-                {{ form.end_date|as_crispy_field }}
+                <label for="end_date" class="block text-gray-700">Data zakończenia</label>
+                <input type="text" id="id_end_date" name="end_date" value="{{ form.end_date.value }}"
+                    class="flatpickr text-center w-full border-t border-b border-gray-300">
             </div>
         </div>
-
         <!-- Number of People -->
         <hr class="my-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
@@ -121,8 +124,9 @@
                 <label for="num_adults" class="block text-gray-700">Liczba dorosłych</label>
                 <div class="flex items-center">
                     <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_adults" name="num_adults" value="{{ form.num_adults.value }}"
-                        min="1" max="10" class="text-center w-12 border-t border-b border-gray-300">
+                    <input type="number" id="id_num_adults" name="num_adults"
+                        value="{{ form.num_adults.value|default:1 }}" min="1" max="10"
+                        class="text-center w-12 border-t border-b border-gray-300">
                     <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
                 </div>
                 <input type="hidden" id="price_per_adult" value="22">
@@ -259,7 +263,6 @@
 
 <script>
 
-
     document.addEventListener('DOMContentLoaded', function () {
 
         // Add event listeners to increment and decrement buttons
@@ -277,6 +280,7 @@
             });
         });
 
+
         document.querySelectorAll('.decrement').forEach(function (button) {
             button.addEventListener('click', function () {
                 const input = this.nextElementSibling;
@@ -290,10 +294,10 @@
                 }
             });
         });
-        // Get the actual rendered input IDs for start_date and end_date
-        const startDateInput = document.getElementById('{{ form.start_date.auto_id }}');
-        const endDateInput = document.getElementById('{{ form.end_date.auto_id }}');
 
+        // Get the rendered input IDs directly by their actual HTML IDs
+        const startDateInput = document.getElementById('id_start_date');
+        const endDateInput = document.getElementById('id_end_date');
         // Initialize Flatpickr on the start_date field
         flatpickr(startDateInput, {
             dateFormat: "Y-m-d",
@@ -304,28 +308,23 @@
                     dateFormat: "Y-m-d",
                     minDate: dateStr
                 });
-                calculateTotalPrice();  // Recalculate price when start date changes
             }
         });
 
         // Initialize Flatpickr on the end_date field with today's date as the minimum
         flatpickr(endDateInput, {
             dateFormat: "Y-m-d",
-            minDate: "today",
-            onChange: function (selectedDates, dateStr, instance) {
-                calculateTotalPrice();  // Recalculate price when end date changes
-            }
+            minDate: "today"
         });
-
         const totalPriceEl = document.getElementById('totalPrice');
 
-        const numAdults = document.getElementById('{{ form.num_adults.id_for_label }}');
-        const numChildren0_3 = document.getElementById('{{ form.num_children_0_3.id_for_label }}');
-        const numChildren4_13 = document.getElementById('{{ form.num_children_4_13.id_for_label }}');
-        const caravanRequired = document.getElementById('{{ form.caravan_required.id_for_label }}');
-        const electricityForTent = document.getElementById('{{ form.electricity_for_tent.id_for_label }}');
-        const electricityForCaravan = document.getElementById('{{ form.electricity_for_caravan.id_for_label }}');
-        const extraPersonCount = document.getElementById('{{ form.extra_person_count.id_for_label }}');
+        const numAdults = document.getElementById('id_num_adults');
+        const numChildren0_3 = document.getElementById('id_num_children_0_3');
+        const numChildren4_13 = document.getElementById('id_num_children_4_13');
+        const caravanRequired = document.getElementById('id_caravan_required');
+        const electricityForTent = document.getElementById('id_electricity_for_tent');
+        const electricityForCaravan = document.getElementById('id_electricity_for_caravan');
+        const extraPersonCount = document.getElementById('id_extra_person_count');
 
         function calculateDays() {
             const startDateValue = startDateInput.value ? new Date(startDateInput.value) : null;
@@ -395,6 +394,7 @@
         // Initial calculation on page load
         calculateTotalPrice();
     });
+
 
 </script>
 {% endblock %}
