@@ -8,9 +8,13 @@ from django.views.generic import DetailView, RedirectView, UpdateView
 
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import ReservationInquiry
 from datetime import timedelta
-from .forms import ReservationInquiryForm
+# from .models import ReservationInquiry
+
+from kempingdabrowno.users.models import ReservationInquiry
+from kempingdabrowno.users.forms import ReservationInquiryForm
+
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 User = get_user_model()
