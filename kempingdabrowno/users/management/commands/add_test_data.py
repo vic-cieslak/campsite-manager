@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Add test data to ReservationInquiry model with associated users'
 
     def handle(self, *args, **kwargs):
-        # Polish names for users
+        # Names and emails for users
         full_names = [
             'Jan Kowalski', 'Anna Nowak', 'Michał Wiśniewski', 
             'Katarzyna Zielińska', 'Piotr Kamiński', 'Agnieszka Dąbrowska'
@@ -22,10 +22,11 @@ class Command(BaseCommand):
         # Create User instances
         users = []
         for full_name, email in zip(full_names, emails):
-            first_name, last_name = full_name.split()
+            # Split the full name into first and last if necessary
+            # Adjust this logic if your custom User model has different fields
             user, created = User.objects.get_or_create(
-                email=email,
-                defaults={'first_name': first_name, 'last_name': last_name}
+                email=email,  # Ensure the field names match your User model
+                defaults={'username': email}  # Add any required fields here, like 'username'
             )
             users.append(user)
 
