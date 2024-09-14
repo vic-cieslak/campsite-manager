@@ -2,13 +2,13 @@ import random
 from datetime import timedelta
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from kempingdabrowno.users.models import ReservationInquiry
+from kempingdabrowno.users.models import User, ReservationInquiry
 
 class Command(BaseCommand):
-    help = 'Add test data to ReservationInquiry model'
+    help = 'Add test data to ReservationInquiry model with associated users'
 
     def handle(self, *args, **kwargs):
-        # Polish names for the reservations
+        # Polish names for users
         full_names = [
             'Jan Kowalski', 'Anna Nowak', 'Michał Wiśniewski', 
             'Katarzyna Zielińska', 'Piotr Kamiński', 'Agnieszka Dąbrowska'
@@ -18,6 +18,16 @@ class Command(BaseCommand):
             'kzielinska@example.com', 'pkaminski@example.com', 'adabrowska@example.com'
         ]
         phone_numbers = ['600111222', '600222333', '600333444', '600444555', '600555666', '600666777']
+
+        # Create User instances
+        users = []
+        for full_name, email in zip(full_names, emails):
+            first_name, last_name = full_name.split()
+            user, created = User.objects.get_or_create(
+                email=email,
+                defaults={'first_name': first_name, 'last_name': last_name}
+            )
+            users.append(user)
 
         # Helper function to get a date closer to the weekend
         def get_weekend_start_date():
@@ -37,6 +47,9 @@ class Command(BaseCommand):
             full_name = random.choice(full_names)
             email = random.choice(emails)
             phone_number = random.choice(phone_numbers)
+
+            # Associate the reservation with a random user
+            user = random.choice(users)
 
             # 70% chance of starting the reservation on a weekend
             if random.random() < 0.7:
@@ -74,6 +87,7 @@ class Command(BaseCommand):
 
             # Create and save the reservation inquiry
             reservation = ReservationInquiry(
+                user=user,
                 full_name=full_name,
                 email=email,
                 phone_number=phone_number,
@@ -98,4 +112,4 @@ class Command(BaseCommand):
             )
             reservation.save()
 
-        self.stdout.write(self.style.SUCCESS('Successfully added 200 test reservations to ReservationInquiry model'))
+        self.stdout.write(self.style.SUCCESS('Successfully added 200 test reservations with associated users to ReservationInquiry model'))
