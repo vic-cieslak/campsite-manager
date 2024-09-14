@@ -16,7 +16,6 @@ class User(AbstractUser):
     name = CharField(_("Name of User"), blank=True, max_length=255)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
-    test = models.CharField(max_length=255, verbose_name=_("Imię i nazwisko"))
 
     email = EmailField(_("email address"), unique=True)
     username = None  # type: ignore
