@@ -326,19 +326,19 @@ SOCIALACCOUNT_FORMS = {"signup": "kempingdabrowno.users.forms.UserSocialSignupFo
 UNFOLD = {
     "SITE_HEADER": "Admin",
     "SITE_TITLE": "Reservation Management",
-    "SITE_ICON": {
-        "light": lambda request: static("Logo-original.svg"),  # light mode
-        "dark": lambda request: static("Logo-blanco.svg"),  # dark mode
-    },
-    "SITE_LOGO": {
-        "light": lambda request: static("Logo-original.svg"),  # light mode
-        "dark": lambda request: static("Logo-blanco.svg"),  # dark mode
-    },
+    # "SITE_ICON": {
+    #     "light": lambda request: static("Logo-original.svg"),  # light mode
+    #     "dark": lambda request: static("Logo-blanco.svg"),  # dark mode
+    # },
+    # "SITE_LOGO": {
+    #     "light": lambda request: static("Logo-original.svg"),  # light mode
+    #     "dark": lambda request: static("Logo-blanco.svg"),  # dark mode
+    # },
     "SITE_SYMBOL": "book_online",  # Icon symbol for the site
     "DASHBOARD_CALLBACK": "users.views.dashboard_callback",  # Customize with your app's view
-    "LOGIN": {
-        "image": lambda r: static("Logo-original.svg"),
-    },
+    # "LOGIN": {
+    #     "image": lambda r: static("Logo-original.svg"),
+    # },
     "TABS": [
         {
             "models": ["users.reservationinquiry"],

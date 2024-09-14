@@ -1,17 +1,19 @@
 {% extends "base.html" %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 {% block content %}
     <h1>Obłożenie kempingu na następne 30 dni</h1>
     <canvas id="populationChart" width="400" height="200"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script>
         const labels = [
             {% for data in population_data %}
-                "{{ data.date|date:'l, d F' }}",  <!-- Formats to 'Day name, Day Month' -->
+                "{{ data.date|date:'l, d F' }}", 
             {% endfor %}
         ];
-        
+
         const data = {
             labels: labels,
             datasets: [{
@@ -28,15 +30,44 @@
         };
 
         const config = {
-            type: 'bar',
+            type: 'line',
             data: data,
             options: {
                 scales: {
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'People: ' + context.raw;
+                            }
+                        }
+                    }
                 }
-            }
+            },
+            plugins: [{
+                id: 'customIcons',
+                afterDatasetsDraw: function(chart, args, options) {
+                    const ctx = chart.ctx;
+                    const xAxis = chart.scales.x;
+                    const yAxis = chart.scales.y;
+
+                    // Set FontAwesome icon properties
+                    ctx.font = "20px FontAwesome";
+                    ctx.fillStyle = "black";  // You can change the icon color here
+
+                    chart.data.datasets[0].data.forEach((value, index) => {
+                        const x = xAxis.getPixelForValue(index);
+                        const y = yAxis.getPixelForValue(value);
+
+                        // Draw FontAwesome icons above each bar (e.g., person icon)
+                        ctx.fillText('\uf183', x - 10, y - 10); // '\uf183' is the unicode for the "user" icon in FontAwesome
+                    });
+                }
+            }]
         };
 
         var myChart = new Chart(
