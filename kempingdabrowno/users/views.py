@@ -169,6 +169,7 @@ def create_reservation_view(request):
             return redirect(reverse('reservation_success'))
         else:
             print(form.errors)
+
     else:
         form = ReservationInquiryForm()
 

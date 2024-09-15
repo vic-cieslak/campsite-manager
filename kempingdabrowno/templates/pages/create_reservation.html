@@ -84,174 +84,249 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 <div class="container mx-auto mt-4 mb-32 px-4 md:px-0">
     <h1 class="text-2xl font-semibold mb-4 text-center">Zarezerwuj miejsce na kempingu</h1>
-    <form method="post" class="needs-validation" novalidate id="reservationForm">
+    <form method="post" class="needs-validation max-w-md mx-auto" novalidate id="reservationForm">
+        {% csrf_token %}
         {% csrf_token %}
 
+        <!-- Display general form errors (non-field errors) -->
+        {% if form.non_field_errors %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-5" role="alert">
+            <strong class="font-bold">Błąd: </strong>
+            <span class="block sm:inline">{{ form.non_field_errors }}</span>
+        </div>
+        {% endif %}
+
         <!-- User Info -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-            <div>
-                {{ form.full_name|as_crispy_field }}
+        <div class="grid md:grid-cols-2 md:gap-6 mb-5">
+            <div class="relative z-0 w-full group">
+                <input type="text" name="full_name" id="full_name" value="{{ form.full_name.value }}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
+                    placeholder=" " required />
+                <label for="full_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Imię
+                    i Nazwisko</label>
+                <!-- Render field errors -->
+                {% if form.full_name.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.full_name.errors }}</p>
+                {% endif %}
             </div>
-            <div>
-                {{ form.email|as_crispy_field }}
+
+            <div class="relative z-0 w-full group">
+                <input type="email" name="email" id="email" value="{{ form.email.value }}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
+                    placeholder=" " required />
+                <label for="email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Email</label>
+                {% if form.email.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.email.errors }}</p>
+                {% endif %}
             </div>
-            <div>
-                {{ form.phone_number|as_crispy_field }}
+
+            <div class="relative z-0 w-full group">
+                <input type="tel" name="phone_number" id="phone_number" value="{{ form.phone_number.value }}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
+                    placeholder=" " required />
+                <label for="phone_number"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Telefon</label>
+                {% if form.phone_number.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.phone_number.errors }}</p>
+                {% endif %}
             </div>
         </div>
 
         <!-- Dates -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-            <div>
-                <label for="start_date" class="block text-gray-700">Data rozpoczęcia</label>
-                <input type="text" id="id_start_date" name="start_date" value="{{ form.start_date.value }}"
-                    class="flatpickr text-center w-full border-t border-b border-gray-300">
+        <div class="grid md:grid-cols-2 md:gap-6 mb-5">
+            <div class="relative z-0 w-full group">
+                <input type="text" name="start_date" id="start_date"
+                    value="{{ form.start_date.value|default_if_none:'' }}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer flatpickr"
+                    placeholder=" " required />
+                <label for="start_date"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Data
+                    przyjazdu   </label>
+                {% if form.start_date.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.start_date.errors }}</p>
+                {% endif %}
             </div>
-            <div>
-                <label for="end_date" class="block text-gray-700">Data zakończenia</label>
-                <input type="text" id="id_end_date" name="end_date" value="{{ form.end_date.value }}"
-                    class="flatpickr text-center w-full border-t border-b border-gray-300">
+
+            <div class="relative z-0 w-full group">
+                <input type="text" name="end_date" id="end_date" value="{{ form.end_date.value|default_if_none:'' }}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer flatpickr"
+                    placeholder=" " required />
+                <label for="end_date"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Data
+                    opuszczenia</label>
+                {% if form.end_date.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.end_date.errors }}</p>
+                {% endif %}
             </div>
         </div>
-        <!-- Number of People -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
-            <div class="custom-number-input">
-                <label for="num_adults" class="block text-gray-700">Liczba dorosłych</label>
+
+        <!-- Number of People with +/- buttons styled -->
+        <div class="grid md:grid-cols-3 md:gap-6 mb-5">
+            <div class="relative z-0 w-full group">
+                <label for="num_adults" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba
+                    dorosłych</label>
                 <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_adults" name="num_adults"
-                        value="{{ form.num_adults.value|default:1 }}" min="1" max="10"
-                        class="text-center w-12 border-t border-b border-gray-300">
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_adults" name="num_adults" value="{{ form.num_adults.value|default:1 }}"
+                        min="1" max="10"
+                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
-                <input type="hidden" id="price_per_adult" value="22">
+                {% if form.num_adults.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.num_adults.errors }}</p>
+                {% endif %}
             </div>
-            <div class="custom-number-input">
-                <label for="num_children_0_3" class="block text-gray-700">Liczba dzieci (0-3)</label>
+
+            <!-- Repeat for other fields with errors -->
+
+            <div class="relative z-0 w-full group">
+                <label for="num_children_0_3"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (0-3)</label>
                 <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_children_0_3" name="num_children_0_3"
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_children_0_3" name="num_children_0_3"
                         value="{{ form.num_children_0_3.value }}" min="0" max="10"
-                        class="text-center w-12 border-t border-b border-gray-300" readonly>
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
-                <input type="hidden" id="price_per_child_0_3" value="0">
+                {% if form.num_children_0_3.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.num_children_0_3.errors }}</p>
+                {% endif %}
             </div>
-            <div class="custom-number-input">
-                <label for="num_children_4_13" class="block text-gray-700">Liczba dzieci (4-13)</label>
+
+            <div class="relative z-0 w-full group">
+                <label for="num_children_4_13"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (4-13)</label>
                 <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_children_4_13" name="num_children_4_13"
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_children_4_13" name="num_children_4_13"
                         value="{{ form.num_children_4_13.value }}" min="0" max="10"
-                        class="text-center w-12 border-t border-b border-gray-300" readonly>
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
-                <input type="hidden" id="price_per_child_4_13" value="15">
+                {% if form.num_children_4_13.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.num_children_4_13.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="relative z-0 w-full group">
+                <label for="extra_person_count"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dodatkowe osoby</label>
+                <div class="flex items-center">
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="extra_person_count" name="extra_person_count"
+                        value="{{ form.extra_person_count.value|default:0 }}" min="0" max="10"
+                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                </div>
+                {% if form.extra_person_count.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.extra_person_count.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="relative z-0 w-full group">
+                <label for="num_animals" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba
+                    zwierząt</label>
+                <div class="flex items-center">
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_animals" name="num_animals" value="{{ form.num_animals.value }}"
+                        min="0" max="5"
+                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                </div>
+                {% if form.num_animals.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.num_animals.errors }}</p>
+                {% endif %}
             </div>
         </div>
+
+
 
         <!-- Camping Details -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-            <div>
+        <div class="grid md:grid-cols-2 md:gap-6 mb-5">
+            <div class="relative z-0 w-full group">
                 {{ form.tent_type|as_crispy_field }}
+                {% if form.tent_type.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.tent_type.errors }}</p>
+                {% endif %}
             </div>
-            <div>
-                {{ form.caravan_required|as_crispy_field }}
-                <input type="hidden" id="price_for_caravan" value="45">
+
+            <div class="relative z-0 w-full group">
+                <label class="inline-flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <input type="checkbox" id="caravan_required" name="caravan_required"
+                        value="{{ form.caravan_required.value }}"
+                        class="w-4 h-4 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600" />
+                    <span class="ml-2">Czy potrzebujesz przyczepy?</span>
+                </label>
+                {% if form.caravan_required.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.caravan_required.errors }}</p>
+                {% endif %}
             </div>
         </div>
 
-        <!-- Electricity and Extras -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-sm mx-auto">
-            <div>
-                {{ form.electricity_for_tent|as_crispy_field }}
-                <input type="hidden" id="price_for_electricity_tent" value="20">
+        <!-- Extras -->
+        <div class="grid md:grid-cols-3 md:gap-6 mb-5">
+            <div class="relative z-0 w-full group">
+                <label class="inline-flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <input type="checkbox" id="electricity_for_tent" name="electricity_for_tent"
+                        value="{{ form.electricity_for_tent.value }}"
+                        class="w-4 h-4 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600" />
+                    <span class="ml-2">Elektryczność dla namiotu</span>
+                </label>
+                {% if form.electricity_for_tent.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.electricity_for_tent.errors }}</p>
+                {% endif %}
             </div>
-            <div>
-                {{ form.electricity_for_caravan|as_crispy_field }}
-                <input type="hidden" id="price_for_electricity_caravan" value="30">
+            <div class="relative z-0 w-full group">
+                <label class="inline-flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <input type="checkbox" id="electricity_for_caravan" name="electricity_for_caravan"
+                        value="{{ form.electricity_for_caravan.value }}"
+                        class="w-4 h-4 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600" />
+                    <span class="ml-2">Elektryczność dla przyczepy</span>
+                </label>
+                {% if form.electricity_for_caravan.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.electricity_for_caravan.errors }}</p>
+                {% endif %}
             </div>
-            <div class="custom-number-input">
-                <label for="extra_person_count" class="block text-gray-700">Liczba dodatkowych osób</label>
-                <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_extra_person_count" name="extra_person_count"
-                        value="{{ form.extra_person_count.value }}" min="0" max="10" step="1"
-                        class="text-center w-12 border-t border-b border-gray-300" readonly>
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
-                </div>
-                <input type="hidden" id="price_per_extra_person" value="7">
-            </div>
-        </div>
-
-        <!-- Additional Services -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-            <div>
-                {{ form.waste_disposal|as_crispy_field }}
-            </div>
-            <div>
-                {{ form.parking_required|as_crispy_field }}
-            </div>
-        </div>
-
-        <!-- Beach Stay -->
-        <hr class="my-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-sm mx-auto">
-            <div class="custom-number-input">
-                <label for="num_beach_stay_adults" class="block text-gray-700">Liczba dorosłych na plaży</label>
-                <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_beach_stay_adults" name="num_beach_stay_adults"
-                        value="{{ form.num_beach_stay_adults.value }}" min="0" max="10" step="1"
-                        class="text-center w-12 border-t border-b border-gray-300" readonly>
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
-                </div>
-            </div>
-            <div class="custom-number-input">
-                <label for="num_beach_stay_children" class="block text-gray-700">Liczba dzieci na plaży</label>
-                <div class="flex items-center">
-                    <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                    <input type="number" id="id_num_beach_stay_children" name="num_beach_stay_children"
-                        value="{{ form.num_beach_stay_children.value }}" min="0" max="10" step="1"
-                        class="text-center w-12 border-t border-b border-gray-300" readonly>
-                    <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
-                </div>
+            <div class="relative z-0 w-full group">
+                <label class="inline-flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <input type="checkbox" name="electricity_for_caravan" id="electricity_for_caravan"
+                        value="{{ form.electricity_for_caravan.value }}"
+                        class="w-4 h-4 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600" />
+                    <span class="ml-2">Elektryczność dla przyczepy</span>
+                </label>
+                {% if form.electricity_for_caravan.errors %}
+                <p class="text-red-500 text-xs italic mt-2">{{ form.electricity_for_caravan.errors }}</p>
+                {% endif %}
             </div>
         </div>
 
-        <!-- Num animals -->
-        <hr class="my-4">
-        <div class="custom-number-input">
-            <label for="num_animals" class="block text-gray-700">Liczba zwierząt</label>
-            <div class="flex items-center">
-                <button type="button" class="decrement bg-gray-300 text-gray-800 rounded-l px-3">−</button>
-                <input type="number" id="id_num_animals" name="num_animals" value="{{ form.num_animals.value }}" min="0"
-                    max="5" step="1" class="text-center w-12 border-t border-b border-gray-300" readonly>
-                <button type="button" class="increment bg-gray-300 text-gray-800 rounded-r px-3">+</button>
+
+
+
+
+        <div id="floatingContainer" class="fixed bottom-4 right-4 z-10 flex items-center space-x-4">
+            <div class="bg-blue-600 text-white font-semibold text-center py-2 px-4 rounded-lg shadow-lg">
+                Cena końcowa: <span id="totalPrice">0</span> PLN
             </div>
-        </div>
-
-        <!-- Discount -->
-        <div class="mb-6 max-w-sm mx-auto">
-            {{ form.apply_discount|as_crispy_field }}
-        </div>
-
-        <div id="floatingContainer">
-            <!-- Total Price -->
-            <div id="totalPriceBox" class="floating-box">
-                <h5>Cena końcowa: <br><span id="totalPrice">0</span> PLN</h5>
-            </div>
-
-            <!-- Reservation Button -->
-            <button id="reservationButton" type="submit">
+            <button id="reservationButton" type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg">
                 Zarezerwuj
             </button>
         </div>
@@ -295,85 +370,94 @@
             });
         });
 
-        // Get the rendered input IDs directly by their actual HTML IDs
-        const startDateInput = document.getElementById('id_start_date');
-        const endDateInput = document.getElementById('id_end_date');
-        // Initialize Flatpickr on the start_date field
-        flatpickr(startDateInput, {
-            dateFormat: "Y-m-d",
-            minDate: "today",
-            onChange: function (selectedDates, dateStr, instance) {
-                // Set the minimum date of the end date based on the start date
-                flatpickr(endDateInput, {
-                    dateFormat: "Y-m-d",
-                    minDate: dateStr
-                });
-            }
-        });
 
-        // Initialize Flatpickr on the end_date field with today's date as the minimum
-        flatpickr(endDateInput, {
+        flatpickr(".flatpickr", {
             dateFormat: "Y-m-d",
             minDate: "today"
         });
+
+        // Add JavaScript to handle the increment and decrement buttons
+        document.querySelectorAll('.flex.items-center button').forEach(button => {
+            button.addEventListener('click', function () {
+                const input = button.closest('div').querySelector('input');
+                const currentValue = parseInt(input.value) || 0;
+                const isIncrement = button.textContent.trim() === '+';
+                const newValue = isIncrement ? currentValue + 1 : currentValue - 1;
+                if (newValue >= input.min && newValue <= input.max) {
+                    input.value = newValue;
+                    input.dispatchEvent(new Event('change'));
+                }
+            });
+        });
         const totalPriceEl = document.getElementById('totalPrice');
 
-        const numAdults = document.getElementById('id_num_adults');
-        const numChildren0_3 = document.getElementById('id_num_children_0_3');
-        const numChildren4_13 = document.getElementById('id_num_children_4_13');
-        const caravanRequired = document.getElementById('id_caravan_required');
-        const electricityForTent = document.getElementById('id_electricity_for_tent');
-        const electricityForCaravan = document.getElementById('id_electricity_for_caravan');
-        const extraPersonCount = document.getElementById('id_extra_person_count');
+        const numAdults = document.getElementById('num_adults');
+        const numChildren0_3 = document.getElementById('num_children_0_3');
+        const numChildren4_13 = document.getElementById('num_children_4_13');
+        const caravanRequired = document.getElementById('caravan_required');
+        const electricityForTent = document.getElementById('electricity_for_tent');
+        const electricityForCaravan = document.getElementById('electricity_for_caravan');
+        const extraPersonCount = document.getElementById('extra_person_count');
+        const startDateInput = document.getElementById('start_date');
+        const endDateInput = document.getElementById('end_date');
+
+        function isValidDate(d) {
+            return d instanceof Date && !isNaN(d);
+        }
 
         function calculateDays() {
-            const startDateValue = startDateInput.value ? new Date(startDateInput.value) : null;
-            const endDateValue = endDateInput.value ? new Date(endDateInput.value) : null;
+            const startDateValue = startDateInput?.value ? new Date(startDateInput.value) : null;
+            const endDateValue = endDateInput?.value ? new Date(endDateInput.value) : null;
 
-            if (startDateValue && endDateValue && endDateValue > startDateValue) {
+            if (isValidDate(startDateValue) && isValidDate(endDateValue) && endDateValue > startDateValue) {
                 // Calculate the number of days between the start and end date
                 const diffTime = Math.abs(endDateValue - startDateValue);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Milliseconds to days
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
                 return diffDays;
             }
-            return 1; // Default to 1 day if dates are invalid
+            return 1; // Default to 1 day if dates are invalid or not selected
         }
 
         function calculateTotalPrice() {
             let totalPrice = 0;
 
-            const pricePerAdult = parseInt(document.getElementById('price_per_adult').value);
-            const pricePerChild0_3 = parseInt(document.getElementById('price_per_child_0_3').value);
-            const pricePerChild4_13 = parseInt(document.getElementById('price_per_child_4_13').value);
-            const priceForCaravan = parseInt(document.getElementById('price_for_caravan').value);
-            const priceForElectricityTent = parseInt(document.getElementById('price_for_electricity_tent').value);
-            const priceForElectricityCaravan = parseInt(document.getElementById('price_for_electricity_caravan').value);
-            const pricePerExtraPerson = parseInt(document.getElementById('price_per_extra_person').value);
+            // Hardcode prices
+            const pricePerAdult = 50; // Price per adult
+            const pricePerChild0_3 = 20; // Price per child (0-3)
+            const pricePerChild4_13 = 30; // Price per child (4-13)
+            const priceForCaravan = 100; // Price for a caravan
+            const priceForElectricityTent = 10; // Price for electricity for a tent
+            const priceForElectricityCaravan = 20; // Price for electricity for a caravan
+            const pricePerExtraPerson = 40; // Price per extra person
 
             // Adults
-            totalPrice += (numAdults.value ? parseInt(numAdults.value) * pricePerAdult : 0);
+            const numAdultsValue = numAdults ? parseInt(numAdults.value, 10) || 0 : 0;
+            totalPrice += numAdultsValue * pricePerAdult;
 
             // Children 0-3
-            totalPrice += (numChildren0_3.value ? parseInt(numChildren0_3.value) * pricePerChild0_3 : 0);
+            const numChildren0_3Value = numChildren0_3 ? parseInt(numChildren0_3.value, 10) || 0 : 0;
+            totalPrice += numChildren0_3Value * pricePerChild0_3;
 
             // Children 4-13
-            totalPrice += (numChildren4_13.value ? parseInt(numChildren4_13.value) * pricePerChild4_13 : 0);
+            const numChildren4_13Value = numChildren4_13 ? parseInt(numChildren4_13.value, 10) || 0 : 0;
+            totalPrice += numChildren4_13Value * pricePerChild4_13;
 
             // Extra person
-            totalPrice += (extraPersonCount.value ? parseInt(extraPersonCount.value) * pricePerExtraPerson : 0);
+            const extraPersonCountValue = extraPersonCount ? parseInt(extraPersonCount.value, 10) || 0 : 0;
+            totalPrice += extraPersonCountValue * pricePerExtraPerson;
 
             // Caravan
-            if (caravanRequired.checked) {
+            if (caravanRequired?.checked) {
                 totalPrice += priceForCaravan;
             }
 
             // Electricity for tent
-            if (electricityForTent.checked) {
+            if (electricityForTent?.checked) {
                 totalPrice += priceForElectricityTent;
             }
 
             // Electricity for caravan
-            if (electricityForCaravan.checked) {
+            if (electricityForCaravan?.checked) {
                 totalPrice += priceForElectricityCaravan;
             }
 
@@ -383,16 +467,21 @@
             // Multiply the total price by the number of days
             totalPrice *= numDays;
 
-            totalPriceEl.textContent = totalPrice;
+            // Display the total price
+            totalPriceEl.textContent = totalPrice.toFixed(2); // Show 2 decimal places
         }
 
-        // Add event listeners to form inputs
+        // Add event listeners to form inputs (with null check)
         [numAdults, numChildren0_3, numChildren4_13, extraPersonCount, caravanRequired, electricityForTent, electricityForCaravan, startDateInput, endDateInput].forEach(input => {
-            input.addEventListener('change', calculateTotalPrice);
+            if (input) {
+                input.addEventListener('change', calculateTotalPrice);
+            }
         });
 
         // Initial calculation on page load
         calculateTotalPrice();
+
+
     });
 
 
