@@ -1,90 +1,88 @@
-
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>
-      {% block title %}
-      KempingDabrowno
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>
+    {% block title %}
+    KempingDabrowno
     {% endblock title %}
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-        content="System rezerwacji i strona landingowa" />
-  <meta name="author"
-        content="Wiktor Cieślak" />
+  <meta name="description" content="System rezerwacji i strona landingowa" />
+  <meta name="author" content="Wiktor Cieślak" />
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
   {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-          integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
-<!-- Your stuff: Third-party CSS libraries go here -->
-<!-- This file stores project-specific CSS -->
+  <!-- Latest compiled and minified Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+    integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Your stuff: Third-party CSS libraries go here -->
+  <!-- This file stores project-specific CSS -->
 
-  
+
   <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
-<style>
-.navbar-nav {
-  margin: auto;
-}
+  <style>
+    .navbar-nav {
+      margin: auto;
+    }
 
-.navbar-nav .nav-item {
-  margin: 0 10px;
-}
+    .navbar-nav .nav-item {
+      margin: 0 10px;
+    }
 
-.navbar-brand img {
-  max-height: 40px;
-}
+    .navbar-brand img {
+      max-height: 40px;
+    }
 
-.dropdown-toggle::after {
-  display: none;
-}
+    .dropdown-toggle::after {
+      display: none;
+    }
 
-.dropdown-menu {
-  min-width: 100px;
-}
+    .dropdown-menu {
+      min-width: 100px;
+    }
 
-.btn-outline-primary, .btn-outline-secondary {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-}
+    .btn-outline-primary,
+    .btn-outline-secondary {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  </style>
 
-
-</style>
-  
-{% endblock css %}
-<!-- Le javascript
+  {% endblock css %}
+  <!-- Le javascript
     ================================================== -->
-{# Placed at the top of the document so pages load faster with defer #}
-{% block javascript %}
+  {# Placed at the top of the document so pages load faster with defer #}
+  {% block javascript %}
 
 
-<!-- Bootstrap JS -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Bootstrap JS -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
 
 
 
   <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet"> -->
-    
-<!-- Your stuff: Third-party javascript libraries go here -->
 
-<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-<!-- place project specific Javascript in this file -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Your stuff: Third-party javascript libraries go here -->
+
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <!-- place project specific Javascript in this file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script defer src="{% static 'js/project.js' %}"></script>
 
 
-{% endblock javascript %}
+  {% endblock javascript %}
 </head>
+
 <body>
   <div class="mb-1">
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -93,95 +91,128 @@
           <img src="{% static 'images/kemping_logo.png' %}" class="h-16" alt="KempingDabrowno Logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
         </a>
-        
+
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <!-- User Dropdown -->
-          <button type="button" class="flex text-sm bg-green-500 p-3 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          {% if request.user.is_authenticated %}
+
+          <button type="button"
+            class="flex text-sm bg-green-500 p-3 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+            id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+            data-dropdown-placement="bottom">
             <span class="sr-only">Open user menu</span>
             <div class="w-10 h-10 rounded-full flex items-center justify-center">
               <i class="fas fa-user text-white text-xl"></i>
             </div>
           </button>
-          
-          <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+          <div
+            class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            id="user-dropdown">
             <div class="px-4 py-3">
               <span class="block text-sm text-gray-900 dark:text-white">{{ request.user.username }}</span>
               <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ request.user.email }}</span>
             </div>
             <ul class="py-2" aria-labelledby="user-menu-button">
               <li>
-                <a href="{% url 'users:detail' request.user.pk %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Profile</a>
+                <a href="{% url 'users:detail' request.user.pk %}"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Mój profil</a>
               </li>
               <li>
-                <a href="{% url 'account_logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign Out</a>
+                <a href="{% url 'account_logout' %}"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Wyloguj
+                  się</a>
               </li>
             </ul>
           </div>
-    
+          {% else %}
+
+          {% endif %}
           <!-- Responsive button -->
-          <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+          <button data-collapse-toggle="navbar-user" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-user" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
         </div>
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="{% url 'home' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+              <a href="{% url 'home' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
             </li>
             <li>
-              <a href="{% url 'create_reservation' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rezerwuj</a>
+              <a href="{% url 'create_reservation' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rezerwuj</a>
             </li>
             <li>
-              <a href="{% url 'my_reservations' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Moje rezerwacje</a>
+              <a href="{% url 'my_reservations' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Moje
+                rezerwacje</a>
             </li>
             <li>
-              <a href="{% url 'populacja' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Obłożenie</a>
+              <a href="{% url 'populacja' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Obłożenie</a>
+            </li>
+            
+
+
+            <li>
+              <a href="{% url 'about' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">O
+                nas</a>
+            </li>
+          {% if not request.user.is_authenticated %}
+
+            <li>
+              <a href="{% url 'account_login' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Zaloguj
+                się</a>
             </li>
             <li>
-              <a href="{% url 'obecne_oblozenie' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Obłożenie teraz</a>
+              <a href="{% url 'account_signup' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rejestracja</a>
             </li>
-            <li>
-              <a href="{% url 'about' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">O nas</a>
-            </li>
+            {% endif %}
+
           </ul>
         </div>
       </div>
     </nav>
-    
-    
+
+
   </div>
   <div class="container">
     {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-          {{ message }}
-          <button type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"></button>
-        </div>
-      {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
     {% endif %}
     {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
+    <p>Use this document as a way to quick start any new project.</p>
     {% endblock content %}
   </div>
   <!-- /container -->
   {% block modal %}
   {% endblock modal %}
   {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        /* Run whatever you want */
-      });
-    </script>
-    {% endcomment %}
+  {% comment %}
+  Script tags with only code, no src (defer by default). To run
+  with a "defer" so that you run inline code:
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      /* Run whatever you want */
+    });
+  </script>
+  {% endcomment %}
   {% endblock inline_javascript %}
 </body>
+
 </html>
