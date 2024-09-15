@@ -132,7 +132,7 @@ def current_occupancy_view(request):
     }
     return render(request, 'pages/current_occupancy_chart.html', context)
 
-@login_required
+# @login_required
 def create_reservation_view(request):
     if request.method == 'POST':
         form = ReservationInquiryForm(request.POST)

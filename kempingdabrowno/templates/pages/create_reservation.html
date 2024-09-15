@@ -102,36 +102,34 @@
 
         <!-- User Info -->
         <div class="grid md:grid-cols-2 md:gap-6 mb-5">
-            <div class="relative z-0 w-full group">
-                <input type="text" name="full_name" id="full_name" value="{{ form.full_name.value }}"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
-                    placeholder=" " required />
-                <label for="full_name"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Imię
-                    i Nazwisko</label>
-                <!-- Render field errors -->
+            <div class="w-full group">
+                <label for="full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imię i
+                    Nazwisko</label>
+                <input type="text" name="full_name" id="full_name" value="{{ form.full_name.value|default_if_none:'' }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Imię i Nazwisko" required />
                 {% if form.full_name.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.full_name.errors }}</p>
                 {% endif %}
             </div>
 
-            <div class="relative z-0 w-full group">
-                <input type="email" name="email" id="email" value="{{ form.email.value }}"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
-                    placeholder=" " required />
-                <label for="email"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Email</label>
+            <div class="w-full group">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <input type="email" name="email" id="email" value="{{ form.email.value|default_if_none:'' }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Email" required />
                 {% if form.email.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.email.errors }}</p>
                 {% endif %}
             </div>
 
-            <div class="relative z-0 w-full group">
-                <input type="tel" name="phone_number" id="phone_number" value="{{ form.phone_number.value }}"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer"
-                    placeholder=" " required />
+            <div class="w-full group">
                 <label for="phone_number"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Telefon</label>
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefon</label>
+                <input type="tel" name="phone_number" id="phone_number"
+                    value="{{ form.phone_number.value|default_if_none:'' }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Telefon" required />
                 {% if form.phone_number.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.phone_number.errors }}</p>
                 {% endif %}
@@ -140,121 +138,91 @@
 
         <!-- Dates -->
         <div class="grid md:grid-cols-2 md:gap-6 mb-5">
-            <div class="relative z-0 w-full group">
+            <div class="w-full group">
+                <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data
+                    przyjazdu</label>
                 <input type="text" name="start_date" id="start_date"
                     value="{{ form.start_date.value|default_if_none:'' }}"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer flatpickr"
-                    placeholder=" " required />
-                <label for="start_date"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Data
-                    przyjazdu   </label>
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr"
+                    placeholder="Wybierz datę" required />
                 {% if form.start_date.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.start_date.errors }}</p>
                 {% endif %}
             </div>
 
-            <div class="relative z-0 w-full group">
-                <input type="text" name="end_date" id="end_date" value="{{ form.end_date.value|default_if_none:'' }}"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-600 focus:ring-0 peer flatpickr"
-                    placeholder=" " required />
-                <label for="end_date"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-6 peer-focus:scale-75">Data
+            <div class="w-full group">
+                <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data
                     opuszczenia</label>
+                <input type="text" name="end_date" id="end_date" value="{{ form.end_date.value|default_if_none:'' }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr"
+                    placeholder="Wybierz datę" required />
                 {% if form.end_date.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.end_date.errors }}</p>
                 {% endif %}
             </div>
         </div>
-
-        <!-- Number of People with +/- buttons styled -->
-        <div class="grid md:grid-cols-3 md:gap-6 mb-5">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 md:gap-6 gap-4 mb-5 justify-center flex flex-col items-center">
             <div class="relative z-0 w-full group">
-                <label for="num_adults" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba
-                    dorosłych</label>
-                <div class="flex items-center">
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
-                    <input type="number" id="num_adults" name="num_adults" value="{{ form.num_adults.value|default:1 }}"
-                        min="1" max="10"
-                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                <label for="num_adults" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dorosłych</label>
+                <div class="flex items-center justify-center">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_adults" name="num_adults" value="{{ form.num_adults.value|default:1 }}" min="1" max="10" class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
                 {% if form.num_adults.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.num_adults.errors }}</p>
                 {% endif %}
             </div>
-
-            <!-- Repeat for other fields with errors -->
-
+        
             <div class="relative z-0 w-full group">
-                <label for="num_children_0_3"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (0-3)</label>
-                <div class="flex items-center">
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
-                    <input type="number" id="num_children_0_3" name="num_children_0_3"
-                        value="{{ form.num_children_0_3.value }}" min="0" max="10"
-                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                <label for="num_children_0_3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (0-3)</label>
+                <div class="flex items-center justify-center">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_children_0_3" name="num_children_0_3" value="{{ form.num_children_0_3.value }}" min="0" max="10" class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
                 {% if form.num_children_0_3.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.num_children_0_3.errors }}</p>
                 {% endif %}
             </div>
-
+        
             <div class="relative z-0 w-full group">
-                <label for="num_children_4_13"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (4-13)</label>
-                <div class="flex items-center">
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
-                    <input type="number" id="num_children_4_13" name="num_children_4_13"
-                        value="{{ form.num_children_4_13.value }}" min="0" max="10"
-                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                <label for="num_children_4_13" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba dzieci (4-13)</label>
+                <div class="flex items-center justify-center">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_children_4_13" name="num_children_4_13" value="{{ form.num_children_4_13.value }}" min="0" max="10" class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
                 {% if form.num_children_4_13.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.num_children_4_13.errors }}</p>
                 {% endif %}
             </div>
-
+        
             <div class="relative z-0 w-full group">
-                <label for="extra_person_count"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dodatkowe osoby</label>
-                <div class="flex items-center">
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
-                    <input type="number" id="extra_person_count" name="extra_person_count"
-                        value="{{ form.extra_person_count.value|default:0 }}" min="0" max="10"
-                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                <label for="extra_person_count" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dodatkowe osoby</label>
+                <div class="flex items-center justify-center">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="extra_person_count" name="extra_person_count" value="{{ form.extra_person_count.value|default:0 }}" min="0" max="10" class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
                 {% if form.extra_person_count.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.extra_person_count.errors }}</p>
                 {% endif %}
             </div>
-
+        
             <div class="relative z-0 w-full group">
-                <label for="num_animals" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba
-                    zwierząt</label>
-                <div class="flex items-center">
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
-                    <input type="number" id="num_animals" name="num_animals" value="{{ form.num_animals.value }}"
-                        min="0" max="5"
-                        class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                    <button type="button"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
+                <label for="num_animals" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Liczba zwierząt</label>
+                <div class="flex items-center justify-center">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-l-lg">−</button>
+                    <input type="number" id="num_animals" name="num_animals" value="{{ form.num_animals.value }}" min="0" max="5" class="block w-12 p-2.5 bg-gray-50 border border-gray-300 text-center focus:ring-blue-500 focus:border-blue-500 text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-2 px-3 rounded-r-lg">+</button>
                 </div>
                 {% if form.num_animals.errors %}
                 <p class="text-red-500 text-xs italic mt-2">{{ form.num_animals.errors }}</p>
                 {% endif %}
             </div>
         </div>
+        
 
 
 
@@ -422,13 +390,31 @@
             let totalPrice = 0;
 
             // Hardcode prices
-            const pricePerAdult = 50; // Price per adult
-            const pricePerChild0_3 = 20; // Price per child (0-3)
-            const pricePerChild4_13 = 30; // Price per child (4-13)
-            const priceForCaravan = 100; // Price for a caravan
-            const priceForElectricityTent = 10; // Price for electricity for a tent
-            const priceForElectricityCaravan = 20; // Price for electricity for a caravan
-            const pricePerExtraPerson = 40; // Price per extra person
+            const pricePerExtraPerson = 22; // Price per extra person
+
+
+            // Hardcode prices
+            const pricePerAdult = 22; // Price per adult
+            const pricePerChild0_3 = 0; // Price per child (0-3), free
+            const pricePerChild4_13 = 15; // Price per child (4-13)
+            const priceForAnimal = 10; // Price for an animal
+            const priceFor2PersonTent = 25; // Price for a 2-person tent
+            const priceFor3_4PersonTent = 35; // Price for a 3-4 person tent
+            const priceFor5_6PersonTent = 45; // Price for a 5-6 person tent
+            const priceForCaravan = 45; // Price for a caravan/camper with awning
+            const priceForParking = 10; // Price for parking for those who are accommodated
+
+            // Electricity and sanitation prices
+            const priceForElectricityTent = 20; // Price for electricity for a tent (2 people)
+            const priceForElectricityCaravan = 20; // Price for electricity for a caravan/camper (2 people)
+            const pricePerExtraPersonElectricity = 7; // Price per extra person for electricity
+            const priceForWasteDisposal = 2; // Price for waste disposal per person
+
+            // Camping site and beach access
+            const pricePerAdultBeachAccess = 15; // Price for adult for camping site and beach
+            const pricePerChildBeachAccess = 5; // Price for child for camping site and beach
+
+
 
             // Adults
             const numAdultsValue = numAdults ? parseInt(numAdults.value, 10) || 0 : 0;
