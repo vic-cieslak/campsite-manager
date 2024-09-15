@@ -135,6 +135,9 @@ def current_occupancy_view(request):
 # @login_required
 def create_reservation_view(request):
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            # Redirect to login page if the user is not authenticated
+            return redirect(f"{reverse('account_login')}?next={request.path}")
         form = ReservationInquiryForm(request.POST)
         if form.is_valid():
             print('form valid!')
@@ -157,8 +160,8 @@ def create_reservation_view(request):
                 extra_person_count=form.cleaned_data.get('extra_person_count', 0),
                 waste_disposal=form.cleaned_data.get('waste_disposal', False),
                 parking_required=form.cleaned_data.get('parking_required', False),
-                num_beach_stay_adults=form.cleaned_data.get('num_beach_stay_adults', 0),
-                num_beach_stay_children=form.cleaned_data.get('num_beach_stay_children', 0),
+                # num_beach_stay_adults=form.cleaned_data.get('num_beach_stay_adults', 0),
+                # num_beach_stay_children=form.cleaned_data.get('num_beach_stay_children', 0),
                 apply_discount=form.cleaned_data.get('apply_discount', False),
                 is_confirmed=False  # Initially not confirmed
             )

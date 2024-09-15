@@ -56,7 +56,6 @@ class ReservationInquiryForm(forms.ModelForm):
             'num_animals', 'tent_type', 'caravan_required', 
             'electricity_for_tent', 'electricity_for_caravan',
             'extra_person_count', 'waste_disposal', 'parking_required',
-            'num_beach_stay_adults', 'num_beach_stay_children', 
             'apply_discount'
         ]
         widgets = {
