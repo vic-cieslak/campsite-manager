@@ -26,34 +26,6 @@
 
   <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
-  <style>
-    .navbar-nav {
-      margin: auto;
-    }
-
-    .navbar-nav .nav-item {
-      margin: 0 10px;
-    }
-
-    .navbar-brand img {
-      max-height: 40px;
-    }
-
-    .dropdown-toggle::after {
-      display: none;
-    }
-
-    .dropdown-menu {
-      min-width: 100px;
-    }
-
-    .btn-outline-primary,
-    .btn-outline-secondary {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.875rem;
-    }
-  </style>
-
   {% endblock css %}
   <!-- Le javascript
     ================================================== -->
@@ -66,13 +38,6 @@
     referrerpolicy="no-referrer"></script>
 
 
-
-  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet"> -->
-
-  <!-- Your stuff: Third-party javascript libraries go here -->
-
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   <!-- place project specific Javascript in this file -->
@@ -80,45 +45,37 @@
   <script defer src="{% static 'js/project.js' %}"></script>
 
   <!-- In your layout.html inside the <head> section or before closing </head> tag -->
-  <style>
-    /* Stylowanie przycisków w Django Allauth */
-    .btn-primary, .btn {
-      @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 hover:bg-blue-600;
-    }
-  
-    /* Stylowanie linków */
-    a {
-      @apply text-blue-500 hover:text-blue-600 underline;
-    }
-  
-    /* Stylowanie pól input w formularzach (np. login i rejestracja) */
-    input[type="text"], input[type="email"], input[type="password"], .form-control {
-      @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
-    }
-  
-    /* Stylowanie checkboxów */
-    input[type="checkbox"], .form-check-input {
-      @apply h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500;
-    }
-  
-    /* Stylowanie nagłówków formularzy */
-    h1 {
-      @apply text-3xl font-bold mb-6 text-center text-gray-800;
-    }
-  
-    /* Stylowanie formularzy (odstępy) */
-    .mb-3 {
-      @apply mb-4;
-    }
-  
-    /* Stylowanie pomniejszych tekstów */
-    .form-text {
-      @apply text-sm text-gray-600;
-    }
-  </style>
+  <!-- Open Graph Tags for Facebook and WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kemping Dąbrówno" />
+  <meta property="og:locale" content="pl_PL" />
 
-  {% endblock javascript %}
+  <!-- Open Graph Tags in Polish -->
+  <meta property="og:title" content="Przeżyj Niezapomniane Chwile na Kempingu Dąbrówno" />
+  <meta property="og:description"
+    content="Odpocznij nad jeziorem, przeżyj wieczory przy ognisku i ciesz się wyjątkowymi wspomnieniami na Kempingu Dąbrówno. Zarezerwuj już teraz!" />
+  <meta property="og:image"
+    content="https://scontent-waw2-1.xx.fbcdn.net/v/t39.30808-6/431485457_717545277160695_88582022582262255_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Fhjd0Ww2bSgQ7kNvgH986Fx&_nc_ht=scontent-waw2-1.xx&_nc_gid=AzZqirhvSqS1Ui3kD85Z4tS&oh=00_AYB2V763Hlgy84XWXoIPSPbKB2ZGwAL7X9ulKRez5MI6Ug&oe=66ECBC4C" />
+  <meta property="og:url" content="https://kempingdabrowno.pl" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Przeżyj Niezapomniane Chwile na Kempingu Dąbrówno" />
+  <meta name="twitter:description"
+    content="Spędź czas nad jeziorem, przy ognisku i w bliskości natury na Kempingu Dąbrówno. Zarezerwuj swój pobyt już teraz!" />
+  <meta name="twitter:image"
+    content="https://scontent-waw2-1.xx.fbcdn.net/v/t39.30808-6/431485457_717545277160695_88582022582262255_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Fhjd0Ww2bSgQ7kNvgH986Fx&_nc_ht=scontent-waw2-1.xx&_nc_gid=AzZqirhvSqS1Ui3kD85Z4tS&oh=00_AYB2V763Hlgy84XWXoIPSPbKB2ZGwAL7X9ulKRez5MI6Ug&oe=66ECBC4C" />
+
+  <!-- Fallback Meta Tags -->
+  <meta name="description"
+    content="Odpocznij nad jeziorem i przeżyj niezapomniane chwile na Kempingu Dąbrówno. Zarezerwuj swój pobyt już teraz!" />
+  <meta name="keywords" content="kemping, jezioro, rezerwacja, ognisko, natura, wypoczynek" />
+
 </head>
+
+
+
+{% endblock javascript %}
 
 <body>
   <div class="mb-1">
