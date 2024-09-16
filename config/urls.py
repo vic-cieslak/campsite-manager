@@ -11,6 +11,7 @@ from kempingdabrowno.users.views import reservation_success_view
 from kempingdabrowno.users.views import my_reservations_view
 from kempingdabrowno.users.views import reservation_detail_view
 from kempingdabrowno.users.views import cancel_reservation_view
+from kempingdabrowno.users.views import reservation_pdf_view
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -26,6 +27,7 @@ urlpatterns = [
     path('rezerwacja-sukces/', reservation_success_view, name='reservation_success'),
     path('moje-rezerwacje/', my_reservations_view, name='my_reservations'),
     path('rezerwacja/<int:id>/', reservation_detail_view, name='reservation_detail'),
+    path('rezerwacja/<int:id>/pdf/', reservation_pdf_view, name='reservation_pdf'),
     path('rezerwacja/<int:id>/cancel/', cancel_reservation_view, name='cancel_reservation'),
     path('i18n/', include('django.conf.urls.i18n')),  # Add this
     # Your stuff: custom urls includes go here

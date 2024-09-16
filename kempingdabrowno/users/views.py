@@ -14,6 +14,19 @@ from datetime import timedelta
 from kempingdabrowno.users.models import ReservationInquiry
 from kempingdabrowno.users.forms import ReservationInquiryForm
 
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+from reportlab.lib.utils import ImageReader
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from django.utils.translation import gettext as _
+from django.conf import settings
+from django.contrib.staticfiles import finders
+import qrcode
+import os
+from io import BytesIO
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -224,3 +237,117 @@ def cancel_reservation_view(request, id):
 def dashboard_callback(request, context):
     # You can modify the context here if needed
     return context
+
+
+
+def reservation_pdf_view(request, id):
+    reservation = ReservationInquiry.objects.get(id=id, user=request.user)
+
+    # Ścieżka do logo Kemping z folderu statycznego
+    logo_path = finders.find('images/kemping_logo.png')
+
+    # Przygotuj odpowiedź HTTP z odpowiednim typem treści
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="reservation_{reservation.id}.pdf"'
+
+    # Ścieżka do fontu DejaVu Sans obsługującego polskie znaki
+    font_path = finders.find('fonts/DejaVuSans.ttf')
+
+    # Sprawdzenie, czy plik fontu został znaleziony
+    if font_path:
+        # Rejestracja nowego fontu w reportlab
+        pdfmetrics.registerFont(TTFont('DejaVu', font_path))
+        font_name = 'DejaVu'
+    else:
+        # Jeśli font nie zostanie znaleziony, użyj domyślnego fontu
+        font_name = 'Helvetica'
+
+
+    # Ustawienia dla formatu A4
+    p = canvas.Canvas(response, pagesize=A4)
+    width, height = A4
+    p.setTitle(f"Reservation_{reservation.id}")
+    
+    # Dodaj logo Kemping, jeśli plik istnieje
+    if logo_path:
+        logo = ImageReader(logo_path)
+        p.drawImage(logo, 40, height - 100, width=120, height=50, mask='auto')
+    
+
+    # Dodaj mały tekst pod logo
+    p.setFont(font_name, 10)  # Ustawiamy mniejszy rozmiar czcionki
+    p.drawString(40, height - 120, _("Wydrukuj tę stronę i okaż ją przy wjeździe na kemping"))
+
+    # Dodaj nagłówek
+    p.setFont(font_name, 16)
+    p.drawString(40, height - 150, _("Reservation Details"))
+    
+    # Separator
+    p.setStrokeColor(colors.grey)
+    p.setLineWidth(1)
+    p.line(40, height - 160, width - 40, height - 160)
+
+    # Zmienne do trzymania pozycji tekstu
+    y_position = height - 180
+    line_spacing = 20
+
+    # Stylizowane pola rezerwacji
+    p.setFont(font_name, 12)
+    
+    def draw_field(label, value):
+        nonlocal y_position
+        p.drawString(40, y_position, f"{label}: {value}")
+        y_position -= line_spacing
+    
+    # Wstawienie szczegółów rezerwacji
+    draw_field(_("Full Name"), reservation.full_name)
+    draw_field(_("Email"), reservation.email)
+    draw_field(_("Phone Number"), reservation.phone_number)
+    draw_field(_("Start Date"), reservation.start_date)
+    draw_field(_("End Date"), reservation.end_date)
+    draw_field(_("Number of Adults"), reservation.num_adults)
+    draw_field(_("Number of Children (0-3 years)"), reservation.num_children_0_3)
+    draw_field(_("Number of Children (4-13 years)"), reservation.num_children_4_13)
+    draw_field(_("Number of Animals"), reservation.num_animals)
+
+    # Dodanie dodatkowych pól
+    draw_field(_("Tent Type"), reservation.get_tent_type_display() if reservation.tent_type else _("No tent required"))
+    draw_field(_("Caravan Required"), _("Yes") if reservation.caravan_required else _("No"))
+    draw_field(_("Electricity for Tent"), _("Yes") if reservation.electricity_for_tent else _("No"))
+    draw_field(_("Electricity for Caravan"), _("Yes") if reservation.electricity_for_caravan else _("No"))
+    draw_field(_("Extra Person Count"), reservation.extra_person_count)
+    draw_field(_("Waste Disposal"), _("Yes") if reservation.waste_disposal else _("No"))
+    draw_field(_("Parking Required"), _("Yes") if reservation.parking_required else _("No"))
+    draw_field(_("Number of Adults at Beach"), reservation.num_beach_stay_adults)
+    draw_field(_("Number of Children at Beach"), reservation.num_beach_stay_children)
+    draw_field(_("Discount Applied"), _("Yes") if reservation.apply_discount else _("No"))
+    
+    # Separator
+    y_position -= 10
+    p.line(40, y_position, width - 40, y_position)
+    y_position -= line_spacing
+    
+    # Statusy rezerwacji
+    p.setFont(font_name, 14)
+    draw_field(_("Reservation Status"), _("Confirmed") if reservation.is_confirmed else _("Pending"))
+    draw_field(_("Cancellation Status"), _("Canceled") if reservation.is_canceled else _("Active"))
+
+    # Tworzenie statycznego kodu QR
+    qr_code_data = "https://example.com/your-static-url"  # Statyczna wartość QR
+    qr = qrcode.make(qr_code_data)
+
+    # Konwertuj kod QR do formatu obrazka
+    qr_io = BytesIO()
+    qr.save(qr_io, format='PNG')
+    qr_io.seek(0)
+
+    # Wstawienie kodu QR do PDF
+    qr_image = ImageReader(qr_io)
+    p.drawImage(qr_image, width - 200, 100, width=100, height=100)  # Rozmiar i pozycja kodu QR
+    
+    # Finalizacja PDF
+    p.showPage()
+    p.save()
+
+    return response
+
