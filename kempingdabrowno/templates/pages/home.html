@@ -4,45 +4,42 @@
 {% block content %}
 
 <!-- Header Section -->
-<!-- Header Section -->
 <header class="bg-cover bg-center h-80 md:h-96" style="background-image: url('{% static 'images/kemping_2.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="h-full flex flex-col justify-center items-center text-center">
-        <div class="bg-black bg-opacity-50 p-6 rounded-lg">
-            <h1 class="text-3xl md:text-4xl text-white font-bold mb-4">Przeżyj Niezapomniane Chwile na Kempingu Dąbrówno</h1>
-            <p class="text-lg mb-4 text-white">Odpocznij nad jeziorem. Przyjemne ogniska, świeże powietrze, i wyjątkowe wspomnienia czekają!</p>
-            <a href="#about" class="bg-yellow-500 text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600">Dowiedz się więcej</a>
+        <div class="bg-black bg-opacity-50 p-8 rounded-lg"> <!-- increased padding -->
+            <h1 class="text-3xl md:text-4xl text-white font-bold mb-8">Przeżyj Niezapomniane Chwile na Kempingu Dąbrówno</h1> <!-- increased margin-bottom -->
+            <p class="text-lg mb-8 text-white">Odpocznij nad jeziorem. Przyjemne ogniska, świeże powietrze, i wyjątkowe wspomnienia czekają!</p> <!-- increased margin-bottom -->
+            <a href="#about" class="bg-yellow-500 text-black py-4 px-8 rounded-lg font-semibold hover:bg-yellow-600">Dowiedz się więcej</a>
         </div>
     </div>
 </header>
 
-
-
 <!-- About Section -->
-<section id="about" class="py-16 bg-gray-100 text-center" style="padding-top: 128px;">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-8">Witamy na Kempingu Dąbrówno</h2>
-        <p class="text-lg mb-6">Położony nad spokojnym jeziorem, Kemping Dąbrówno to miejsce, gdzie znajdziesz zarówno spokój, jak i przygody. Nasza oferta obejmuje wygodne miejsca kempingowe, wieczory przy ognisku oraz wyjątkową gościnność.</p>
+<section id="about" class="py-24 bg-gray-100 text-center"> <!-- increased padding top/bottom -->
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-12">Witamy na Kempingu Dąbrówno</h2> <!-- increased margin-bottom -->
+        <p class="text-lg mb-8">Położony nad spokojnym jeziorem, Kemping Dąbrówno to miejsce, gdzie znajdziesz zarówno spokój, jak i przygody. Nasza oferta obejmuje wygodne miejsca kempingowe, wieczory przy ognisku oraz wyjątkową gościnność.</p>
         <a href="#services" class="text-yellow-500 font-semibold hover:underline">Poznaj więcej</a>
     </div>
 </section>
 
 <!-- Features Section -->
-<section id="features" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<section id="features" class="py-24 bg-white"> <!-- increased padding top/bottom -->
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center"> <!-- increased gap -->
             <div class="feature-item">
-                <i class="fas fa-tree fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Bliskość natury</h3>
+                <i class="fas fa-tree fa-3x text-yellow-500 mb-8"></i> <!-- increased margin-bottom -->
+                <h3 class="text-xl font-semibold mb-4">Bliskość natury</h3>
                 <p class="text-gray-600">Zachwyć się pięknymi zachodami słońca nad jeziorem i doświadcz prawdziwej bliskości natury.</p>
             </div>
             <div class="feature-item">
-                <i class="fas fa-fire-alt fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Ogniska i Muzyka</h3>
+                <i class="fas fa-fire-alt fa-3x text-yellow-500 mb-8"></i> <!-- increased margin-bottom -->
+                <h3 class="text-xl font-semibold mb-4">Ogniska i Muzyka</h3>
                 <p class="text-gray-600">Wieczorne ogniska, muzyka na żywo i DJ-e tworzą wyjątkową atmosferę, którą zapamiętasz na długo.</p>
             </div>
             <div class="feature-item">
-                <i class="fas fa-utensils fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Pyszne Jedzenie</h3>
+                <i class="fas fa-utensils fa-3x text-yellow-500 mb-8"></i> <!-- increased margin-bottom -->
+                <h3 class="text-xl font-semibold mb-4">Pyszne Jedzenie</h3>
                 <p class="text-gray-600">Ciesz się świeżo wędzoną rybą, domowymi obiadami i wyjątkowymi deserami podczas pobytu.</p>
             </div>
         </div>
@@ -50,11 +47,11 @@
 </section>
 
 <!-- Gallery Section -->
-<section id="gallery" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-8">Galeria</h2>
-        <p class="text-center mb-6 text-lg">Zobacz, co czeka na Ciebie na Kempingu</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<section id="gallery" class="py-24 bg-gray-100"> <!-- increased padding top/bottom -->
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-12">Galeria</h2> <!-- increased margin-bottom -->
+        <p class="text-center mb-8 text-lg">Zobacz, co czeka na Ciebie na Kempingu</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <!-- increased gap -->
             <img src="{% static 'images/kemping_1.jpg' %}" alt="Kemping 1" class="rounded-lg shadow-md">
             <img src="{% static 'images/kemping_3.jpg' %}" alt="Kemping 3" class="rounded-lg shadow-md">
             <img src="{% static 'images/kemping_4.jpg' %}" alt="Kemping 4" class="rounded-lg shadow-md">
@@ -64,20 +61,19 @@
     </div>
 </section>
 
-
 <!-- Services Section -->
-<section id="services" class="py-16">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-8">Nasza Oferta</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section id="services" class="pt-32 pb-36"> <!-- Further increased padding-top and padding-bottom -->
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-24">Nasza Oferta</h2> <!-- Increased margin-bottom -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center justify-center text-center"> <!-- Increased gap between grid items -->
             <div class="service-item">
-                <i class="fas fa-bicycle fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-4">Wynajem Sprzętu</h3>
+                <i class="fas fa-bicycle fa-3x text-yellow-500 mb-10"></i> <!-- Adjusted margin-bottom for icon -->
+                <h3 class="text-2xl font-semibold mb-6">Wynajem Sprzętu</h3> <!-- Adjusted margin-bottom for title -->
                 <p class="text-gray-600">Wynajmij rowery, kajaki, SUP-y oraz sprzęt sportowy, aby w pełni wykorzystać aktywny wypoczynek nad jeziorem.</p>
             </div>
             <div class="service-item">
-                <i class="fas fa-music fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-4">Imprezy i Eventy</h3>
+                <i class="fas fa-music fa-3x text-yellow-500 mb-10"></i> <!-- Adjusted margin-bottom for icon -->
+                <h3 class="text-2xl font-semibold mb-6">Imprezy i Eventy</h3> <!-- Adjusted margin-bottom for title -->
                 <p class="text-gray-600">Każdy weekend oferujemy muzykę na żywo, DJ-ów oraz tematyczne imprezy, które dostarczą Ci wspaniałych wspomnień.</p>
             </div>
         </div>
@@ -85,17 +81,17 @@
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="py-16 bg-gray-100 text-center">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-8">Opinie Gości</h2>
-        <p class="text-lg mb-6">Sprawdź, co nasi goście mówią o Kempingu Dąbrówno</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section id="testimonials" class="pt-36 pb-40 bg-gray-100 text-center"> <!-- Further increased padding-top and padding-bottom -->
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-20">Opinie Gości</h2> <!-- Further increased margin-bottom -->
+        <p class="text-lg mb-14">Sprawdź, co nasi goście mówią o Kempingu Dąbrówno</p> <!-- Increased margin-bottom for subtitle -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20"> <!-- Increased gap between testimonials -->
             <div class="testimonial">
-                <p class="text-lg italic mb-4">"Najlepszy kemping, na jakim kiedykolwiek byliśmy! Czysto, komfortowo, a atmosfera wieczornych ognisk jest niezapomniana."</p>
+                <p class="text-lg italic mb-10">"Najlepszy kemping, na jakim kiedykolwiek byliśmy! Czysto, komfortowo, a atmosfera wieczornych ognisk jest niezapomniana."</p>
                 <h3 class="text-xl font-semibold">- Janusz i Katarzyna</h3>
             </div>
             <div class="testimonial">
-                <p class="text-lg italic mb-4">"Przepiękne widoki, pyszne jedzenie i bardzo pomocni właściciele. Na pewno wrócimy z całą rodziną!"</p>
+                <p class="text-lg italic mb-10">"Przepiękne widoki, pyszne jedzenie i bardzo pomocni właściciele. Na pewno wrócimy z całą rodziną!"</p>
                 <h3 class="text-xl font-semibold">- Anna</h3>
             </div>
         </div>
@@ -103,13 +99,14 @@
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="py-16 bg-yellow-500 text-center text-black">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-8">Skontaktuj się z nami</h2>
-        <p class="text-lg mb-6">Zarezerwuj swój pobyt na Kempingu Dąbrówno już dziś i przeżyj niezapomniane chwile!</p>
-        <p class="text-sm italic mb-4">Miejsca na weekend szybko się zapełniają - nie przegap okazji!</p>
-        <a href="mailto:kontakt@kempingdabrowno.pl" class="bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800">Napisz do nas</a>
+<section id="contact" class="pt-36 pb-36 bg-yellow-500 text-center text-black"> <!-- Consistent padding top and bottom -->
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-12">Skontaktuj się z nami</h2> <!-- Adjusted margin-bottom -->
+        <p class="text-lg mb-8">Zarezerwuj swój pobyt na Kempingu Dąbrówno już dziś i przeżyj niezapomniane chwile!</p>
+        <p class="text-sm italic mb-10">Miejsca na weekend szybko się zapełniają - nie przegap okazji!</p> <!-- Increased margin-bottom -->
+        <a href="mailto:kontakt@kempingdabrowno.pl" class="bg-black text-white py-4 px-8 rounded-lg font-semibold hover:bg-gray-800">Napisz do nas</a>
     </div>
 </section>
+
 
 {% endblock %}
