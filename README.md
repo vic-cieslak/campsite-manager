@@ -9,7 +9,7 @@ This project is a Django-based web application designed for managing reservation
 ![Screenshot from 2024-09-26 08-33-30](https://github.com/user-attachments/assets/3fc047ad-9ebe-4613-a757-0e4bcb2be2df)
 
 
-## Create reservation flow
+## Create reservation flow, reservation management and PDF generation
 
 https://github.com/user-attachments/assets/665efecb-2d85-4222-9697-2c5766315443
 
