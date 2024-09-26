@@ -13,7 +13,7 @@ This project is a Django-based web application designed for managing reservation
 
 https://github.com/user-attachments/assets/665efecb-2d85-4222-9697-2c5766315443
 
-## django unfold admin panel backend
+## Django Unfold Admin Panel backend
 
 https://github.com/user-attachments/assets/d81a8b5d-1ad1-4045-8a44-24eddbac5e53
 
