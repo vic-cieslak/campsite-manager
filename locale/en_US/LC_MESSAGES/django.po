@@ -1,4 +1,4 @@
-# Translations for the KempingDabrowno project
+# Translations for the campsitemanager project
 # Copyright (C) 2024 Wiktor Cieślak
 # Wiktor Cieślak <wiktorcie@gmail.com>, 2024.
 #

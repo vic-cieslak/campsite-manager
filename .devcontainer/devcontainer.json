@@ -1,6 +1,6 @@
 // For format details, see https://containers.dev/implementors/json_reference/
 {
-    "name": "kempingdabrowno_dev",
+    "name": "campsitemanager_dev",
     "dockerComposeFile": [
         "../local.yml"
     ],

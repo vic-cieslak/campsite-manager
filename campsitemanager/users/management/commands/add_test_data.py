@@ -2,7 +2,7 @@ import random
 from datetime import timedelta
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from kempingdabrowno.users.models import User, ReservationInquiry
+from campsitemanager.users.models import User, ReservationInquiry
 
 class Command(BaseCommand):
     help = 'Add test data to ReservationInquiry model with associated users'

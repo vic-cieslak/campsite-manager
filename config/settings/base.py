@@ -7,8 +7,8 @@ from django.templatetags.static import static
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# kempingdabrowno/
-APPS_DIR = BASE_DIR / "kempingdabrowno"
+# campsitemanager/
+APPS_DIR = BASE_DIR / "campsitemanager"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -86,7 +86,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "kempingdabrowno.users",
+    "campsitemanager.users",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -95,7 +95,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "kempingdabrowno.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "campsitemanager.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "kempingdabrowno.users.context_processors.allauth_settings",
+                "campsitemanager.users.context_processors.allauth_settings",
             ],
         },
     }
@@ -308,13 +308,13 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = "kempingdabrowno.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "campsitemanager.users.adapters.AccountAdapter"
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {"signup": "kempingdabrowno.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "campsitemanager.users.forms.UserSignupForm"}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = "kempingdabrowno.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "campsitemanager.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "kempingdabrowno.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "campsitemanager.users.forms.UserSocialSignupForm"}
 
 
 # Your stuff...

@@ -11,8 +11,8 @@ from django.utils import timezone
 from datetime import timedelta
 # from .models import ReservationInquiry
 
-from kempingdabrowno.users.models import ReservationInquiry
-from kempingdabrowno.users.forms import ReservationInquiryForm
+from campsitemanager.users.models import ReservationInquiry
+from campsitemanager.users.forms import ReservationInquiryForm
 
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas

@@ -4,14 +4,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
-from kempingdabrowno.users.views import camping_population_chart_view
-from kempingdabrowno.users.views import current_occupancy_view
-from kempingdabrowno.users.views import create_reservation_view
-from kempingdabrowno.users.views import reservation_success_view
-from kempingdabrowno.users.views import my_reservations_view
-from kempingdabrowno.users.views import reservation_detail_view
-from kempingdabrowno.users.views import cancel_reservation_view
-from kempingdabrowno.users.views import reservation_pdf_view
+from campsitemanager.users.views import camping_population_chart_view
+from campsitemanager.users.views import current_occupancy_view
+from campsitemanager.users.views import create_reservation_view
+from campsitemanager.users.views import reservation_success_view
+from campsitemanager.users.views import my_reservations_view
+from campsitemanager.users.views import reservation_detail_view
+from campsitemanager.users.views import cancel_reservation_view
+from campsitemanager.users.views import reservation_pdf_view
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -19,7 +19,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("kempingdabrowno.users.urls", namespace="users")),
+    path("users/", include("campsitemanager.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path('populacja/', camping_population_chart_view, name='populacja'),
     path('obecne-oblozenie/', current_occupancy_view, name='obecne_oblozenie'),

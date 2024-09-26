@@ -3,7 +3,7 @@ import django.contrib.auth.validators
 from django.db import migrations, models
 import django.utils.timezone
 
-import kempingdabrowno.users.models
+import campsitemanager.users.models
 
 
 class Migration(migrations.Migration):
@@ -105,7 +105,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("objects", kempingdabrowno.users.models.UserManager()),
+                ("objects", campsitemanager.users.models.UserManager()),
             ],
         ),
     ]

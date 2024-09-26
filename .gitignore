@@ -272,7 +272,7 @@ tags
 dump.rdb
 
 ### Project template
-kempingdabrowno/media/
+campsitemanager/media/
 
 .pytest_cache/
 .ipython/

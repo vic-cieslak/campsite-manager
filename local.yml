@@ -1,16 +1,16 @@
 version: '3'
 
 volumes:
-  kempingdabrowno_local_postgres_data: {}
-  kempingdabrowno_local_postgres_data_backups: {}
+  campsitemanager_local_postgres_data: {}
+  campsitemanager_local_postgres_data_backups: {}
 
 services:
   django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
-    image: kempingdabrowno_local_django
-    container_name: kempingdabrowno_local_django
+    image: campsitemanager_local_django
+    container_name: campsitemanager_local_django
     depends_on:
       - postgres
       - redis
@@ -27,17 +27,17 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: kempingdabrowno_production_postgres
-    container_name: kempingdabrowno_local_postgres
+    image: campsitemanager_production_postgres
+    container_name: campsitemanager_local_postgres
     volumes:
-      - kempingdabrowno_local_postgres_data:/var/lib/postgresql/data
-      - kempingdabrowno_local_postgres_data_backups:/backups
+      - campsitemanager_local_postgres_data:/var/lib/postgresql/data
+      - campsitemanager_local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
 
   docs:
-    image: kempingdabrowno_local_docs
-    container_name: kempingdabrowno_local_docs
+    image: campsitemanager_local_docs
+    container_name: campsitemanager_local_docs
     build:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
@@ -46,19 +46,19 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./kempingdabrowno:/app/kempingdabrowno:z
+      - ./campsitemanager:/app/campsitemanager:z
     ports:
       - '9000:9000'
     command: /start-docs
 
   redis:
     image: docker.io/redis:6
-    container_name: kempingdabrowno_local_redis
+    container_name: campsitemanager_local_redis
 
   celeryworker:
     <<: *django
-    image: kempingdabrowno_local_celeryworker
-    container_name: kempingdabrowno_local_celeryworker
+    image: campsitemanager_local_celeryworker
+    container_name: campsitemanager_local_celeryworker
     depends_on:
       - redis
       - postgres
@@ -67,8 +67,8 @@ services:
 
   celerybeat:
     <<: *django
-    image: kempingdabrowno_local_celerybeat
-    container_name: kempingdabrowno_local_celerybeat
+    image: campsitemanager_local_celerybeat
+    container_name: campsitemanager_local_celerybeat
     depends_on:
       - redis
       - postgres
@@ -77,8 +77,8 @@ services:
 
   flower:
     <<: *django
-    image: kempingdabrowno_local_flower
-    container_name: kempingdabrowno_local_flower
+    image: campsitemanager_local_flower
+    container_name: campsitemanager_local_flower
     ports:
       - '5555:5555'
     command: /start-flower

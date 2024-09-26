@@ -27,7 +27,7 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "KempingDabrowno"
+project = "campsitemanager"
 copyright = """2024, Wiktor Cieślak"""
 author = "Wiktor Cieślak"
 

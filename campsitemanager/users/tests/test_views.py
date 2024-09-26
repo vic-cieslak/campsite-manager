@@ -9,10 +9,10 @@ from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from kempingdabrowno.users.forms import UserAdminChangeForm
-from kempingdabrowno.users.models import User
-from kempingdabrowno.users.tests.factories import UserFactory
-from kempingdabrowno.users.views import (
+from campsitemanager.users.forms import UserAdminChangeForm
+from campsitemanager.users.models import User
+from campsitemanager.users.tests.factories import UserFactory
+from campsitemanager.users.views import (
     UserRedirectView,
     UserUpdateView,
     user_detail_view,

@@ -3,11 +3,11 @@ from django.db.models import CharField, EmailField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db import models  # Ensure this line is at the top of your file
-from kempingdabrowno.users.managers import UserManager
+from campsitemanager.users.managers import UserManager
 
 class User(AbstractUser):
     """
-    Default custom user model for KempingDabrowno.
+    Default custom user model for campsitemanager.
     If adding fields that need to be filled at user signup,
     check forms.SignupForm and forms.SocialSignupForms accordingly.
     """

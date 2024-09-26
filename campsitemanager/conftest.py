@@ -1,7 +1,7 @@
 import pytest
 
-from kempingdabrowno.users.models import User
-from kempingdabrowno.users.tests.factories import UserFactory
+from campsitemanager.users.models import User
+from campsitemanager.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import ReservationInquiry
 
-from kempingdabrowno.users.forms import UserAdminChangeForm, UserAdminCreationForm
+from campsitemanager.users.forms import UserAdminChangeForm, UserAdminCreationForm
 from unfold.admin import ModelAdmin
 User = get_user_model()
 
