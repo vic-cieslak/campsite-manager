@@ -1,8 +1,6 @@
 # Reservation System and Landing Page
 
 
-![Screenshot from 2024-09-26 08-33-30](https://github.com/user-attachments/assets/3fc047ad-9ebe-4613-a757-0e4bcb2be2df)
-
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
