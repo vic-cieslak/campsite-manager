@@ -1,5 +1,3 @@
-![Screenshot from 2024-09-26 08-33-30](https://github.com/user-attachments/assets/3d5786d1-e39e-493b-886e-6f987347252a)# campsitemanager
-
 System rezerwacji i strona landingowa
 
 
