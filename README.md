@@ -10,6 +10,14 @@ https://github.com/user-attachments/assets/665efecb-2d85-4222-9697-2c5766315443
 
 
 
+
+
+
+https://github.com/user-attachments/assets/d81a8b5d-1ad1-4045-8a44-24eddbac5e53
+
+
+
+
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
