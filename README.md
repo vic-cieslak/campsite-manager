@@ -1,7 +1,4 @@
-System rezerwacji i strona landingowa
----
-
-# System Rezerwacji i Strona Landingowa
+# Reservation System and Landing Page
 
 
 ![Screenshot from 2024-09-26 08-33-30](https://github.com/user-attachments/assets/3fc047ad-9ebe-4613-a757-0e4bcb2be2df)
