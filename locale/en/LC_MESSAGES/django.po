@@ -16,83 +16,78 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: campsitemanager/templates/account/account_inactive.html:6
 #: campsitemanager/templates/account/account_inactive.html:9
 msgid "Account Inactive"
-msgstr "Konto nieaktywne"
+msgstr ""
 
 #: campsitemanager/templates/account/account_inactive.html:10
 msgid "This account is inactive."
-msgstr "To konto jest nieaktywne."
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:8
 msgid "Account"
-msgstr "Konto"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:11
 msgid "E-mail Addresses"
-msgstr "Adresy e-mail"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:13
 msgid "The following e-mail addresses are associated with your account:"
-msgstr "Następujące adresy e-mail są powiązane z Twoim kontem:"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:28
 msgid "Verified"
-msgstr "Zweryfikowany"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:30
 msgid "Unverified"
-msgstr "Niezweryfikowany"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:33
 msgid "Primary"
-msgstr "Główny"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:41
 msgid "Make Primary"
-msgstr "Ustaw jako główny"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:44
 msgid "Re-send Verification"
-msgstr "Wyślij ponownie weryfikację"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:47
 msgid "Remove"
-msgstr "Usuń"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:53
 msgid "Warning:"
-msgstr "Ostrzeżenie:"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:53
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
 msgstr ""
-"Obecnie nie masz ustawionego adresu e-mail. Powinieneś dodać adres e-mail, "
-"aby otrzymywać powiadomienia, zresetować hasło itp."
 
 #: campsitemanager/templates/account/email.html:56
 msgid "Add E-mail Address"
-msgstr "Dodaj adres e-mail"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:60
 msgid "Add E-mail"
-msgstr "Dodaj e-mail"
+msgstr ""
 
 #: campsitemanager/templates/account/email.html:67
 msgid "Do you really want to remove the selected e-mail address?"
-msgstr "Czy na pewno chcesz usunąć wybrany adres e-mail?"
+msgstr ""
 
 #: campsitemanager/templates/account/email_confirm.html:7
 #: campsitemanager/templates/account/email_confirm.html:10
 msgid "Confirm E-mail Address"
-msgstr "Potwierdź adres e-mail"
+msgstr ""
 
 #: campsitemanager/templates/account/email_confirm.html:14
 #, python-format
@@ -100,12 +95,10 @@ msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
 msgstr ""
-"Proszę potwierdź, że <a href=\"mailto:%(email)s\">%(email)s</a> to adres e-"
-"mail użytkownika %(user_display)s."
 
 #: campsitemanager/templates/account/email_confirm.html:19
 msgid "Confirm"
-msgstr "Potwierdź"
+msgstr ""
 
 #: campsitemanager/templates/account/email_confirm.html:24
 #, python-format
@@ -113,18 +106,16 @@ msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a "
 "href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
-"Link do potwierdzenia e-maila wygasł lub jest nieprawidłowy. Proszę <a "
-"href=\"%(email_url)s\">złóż nowe żądanie potwierdzenia e-maila</a>."
 
 #: campsitemanager/templates/account/login.html:8
 #: campsitemanager/templates/account/login.html:12
 #: campsitemanager/templates/account/login.html:51
 msgid "Sign In"
-msgstr "Zaloguj się"
+msgstr ""
 
 #: campsitemanager/templates/account/login.html:16
 msgid "Please sign in with one of your existing third party accounts:"
-msgstr "Zaloguj się za pomocą jednego z istniejących kont zewnętrznych:"
+msgstr ""
 
 #: campsitemanager/templates/account/login.html:18
 #, python-format
@@ -132,12 +123,10 @@ msgid ""
 "Or, <a href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and "
 "sign in below:"
 msgstr ""
-"Albo, <a href=\"%(signup_url)s\">zarejestruj się</a> na konto %(site_name)s "
-"i zaloguj się poniżej:"
 
 #: campsitemanager/templates/account/login.html:28
 msgid "or"
-msgstr "lub"
+msgstr ""
 
 #: campsitemanager/templates/account/login.html:34
 #, python-format
@@ -145,22 +134,20 @@ msgid ""
 "If you have not created an account yet, then please <a "
 "href=\"%(signup_url)s\">sign up</a> first."
 msgstr ""
-"Jeśli nie utworzyłeś jeszcze konta, proszę <a "
-"href=\"%(signup_url)s\">zarejestruj się</a> najpierw."
 
 #: campsitemanager/templates/account/login.html:50
 msgid "Forgot Password?"
-msgstr "Zapomniałeś hasła?"
+msgstr ""
 
 #: campsitemanager/templates/account/logout.html:6
 #: campsitemanager/templates/account/logout.html:9
 #: campsitemanager/templates/account/logout.html:18
 msgid "Sign Out"
-msgstr "Wyloguj się"
+msgstr ""
 
 #: campsitemanager/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
-msgstr "Czy na pewno chcesz się wylogować?"
+msgstr ""
 
 #: campsitemanager/templates/account/password_change.html:7
 #: campsitemanager/templates/account/password_change.html:10
@@ -170,42 +157,38 @@ msgstr "Czy na pewno chcesz się wylogować?"
 #: campsitemanager/templates/account/password_reset_from_key_done.html:6
 #: campsitemanager/templates/account/password_reset_from_key_done.html:9
 msgid "Change Password"
-msgstr "Zmień hasło"
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset.html:8
 #: campsitemanager/templates/account/password_reset.html:11
 #: campsitemanager/templates/account/password_reset_done.html:7
 #: campsitemanager/templates/account/password_reset_done.html:10
 msgid "Password Reset"
-msgstr "Resetowanie hasła"
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
 msgstr ""
-"Zapomniałeś hasła? Wpisz swój adres e-mail poniżej, a my wyślemy Ci "
-"wiadomość e-mail, która pozwoli Ci je zresetować."
 
 #: campsitemanager/templates/account/password_reset.html:25
 msgid "Reset My Password"
-msgstr "Zresetuj moje hasło"
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset.html:27
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Skontaktuj się z nami, jeśli masz problem z resetowaniem hasła."
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
-"Wysłaliśmy Ci wiadomość e-mail. Skontaktuj się z nami, jeśli nie otrzymasz "
-"jej w ciągu kilku minut."
 
 #: campsitemanager/templates/account/password_reset_from_key.html:12
 msgid "Bad Token"
-msgstr "Nieprawidłowy token"
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset_from_key.html:20
 #, python-format
@@ -214,55 +197,52 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
-"Link do resetowania hasła był nieprawidłowy, być może został już użyty. "
-"Proszę <a href=\"%(passwd_reset_url)s\">złóż nowe żądanie resetowania hasła</"
-"a>."
 
 #: campsitemanager/templates/account/password_reset_from_key.html:30
 msgid "change password"
-msgstr "zmień hasło"
+msgstr ""
 
 #: campsitemanager/templates/account/password_reset_from_key.html:33
 #: campsitemanager/templates/account/password_reset_from_key_done.html:10
 msgid "Your password is now changed."
-msgstr "Twoje hasło zostało zmienione."
+msgstr ""
 
 #: campsitemanager/templates/account/password_set.html:7
 #: campsitemanager/templates/account/password_set.html:10
 #: campsitemanager/templates/account/password_set.html:19
 msgid "Set Password"
-msgstr "Ustaw hasło"
+msgstr ""
 
 #: campsitemanager/templates/account/signup.html:7
 msgid "Signup"
-msgstr "Rejestracja"
+msgstr ""
 
 #: campsitemanager/templates/account/signup.html:10
 #: campsitemanager/templates/account/signup.html:25
 msgid "Sign Up"
-msgstr "Zarejestruj się"
+msgstr ""
 
 #: campsitemanager/templates/account/signup.html:12
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr "Masz już konto? Proszę <a href=\"%(login_url)s\">zaloguj się</a>."
+msgstr ""
 
 #: campsitemanager/templates/account/signup_closed.html:6
 #: campsitemanager/templates/account/signup_closed.html:9
 msgid "Sign Up Closed"
-msgstr "Rejestracja zamknięta"
+msgstr ""
 
 #: campsitemanager/templates/account/signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
-msgstr "Przepraszamy, ale rejestracja jest obecnie zamknięta."
+msgstr ""
 
 #: campsitemanager/templates/account/verification_sent.html:6
 #: campsitemanager/templates/account/verification_sent.html:9
 #: campsitemanager/templates/account/verified_email_required.html:6
 #: campsitemanager/templates/account/verified_email_required.html:9
 msgid "Verify Your E-mail Address"
-msgstr "Zweryfikuj swój adres e-mail"
+msgstr ""
 
 #: campsitemanager/templates/account/verification_sent.html:11
 msgid ""
@@ -270,9 +250,6 @@ msgid ""
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
-"Wysłaliśmy Ci wiadomość e-mail w celu weryfikacji. Skorzystaj z podanego "
-"linku, aby zakończyć proces rejestracji. Skontaktuj się z nami, jeśli nie "
-"otrzymasz wiadomości w ciągu kilku minut."
 
 #: campsitemanager/templates/account/verified_email_required.html:12
 msgid ""
@@ -280,9 +257,6 @@ msgid ""
 "you are who you claim to be. For this purpose, we require that you\n"
 "verify ownership of your e-mail address. "
 msgstr ""
-"Ta część strony wymaga od nas weryfikacji, że\n"
-"jesteś tym, za kogo się podajesz. W tym celu musisz\n"
-"zweryfikować własność swojego adresu e-mail."
 
 #: campsitemanager/templates/account/verified_email_required.html:17
 msgid ""
@@ -290,9 +264,6 @@ msgid ""
 "verification. Please click on the link inside this e-mail. Please\n"
 "contact us if you do not receive it within a few minutes."
 msgstr ""
-"Wysłaliśmy Ci wiadomość e-mail w celu weryfikacji.\n"
-"Proszę kliknij na link w wiadomości e-mail. Skontaktuj się z nami,\n"
-"jeśli nie otrzymasz wiadomości w ciągu kilku minut."
 
 #: campsitemanager/templates/account/verified_email_required.html:22
 #, python-format
@@ -300,64 +271,62 @@ msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
 msgstr ""
-"<strong>Uwaga:</strong> nadal możesz <a href=\"%(email_url)s\">zmienić swój "
-"adres e-mail</a>."
 
 #: campsitemanager/templates/base.html:85
 msgid "Campsite Manager Logo"
-msgstr "Logo Kemping Dąbrówno"
+msgstr ""
 
 #: campsitemanager/templates/base.html:97
 msgid "Open user menu"
-msgstr "Otwórz menu użytkownika"
+msgstr ""
 
 #: campsitemanager/templates/base.html:112
 msgid "My profile"
-msgstr "Mój profil"
+msgstr ""
 
 #: campsitemanager/templates/base.html:116
 msgid "Log out"
-msgstr "Wyloguj się"
+msgstr ""
 
 #: campsitemanager/templates/base.html:127
 msgid "Open main menu"
-msgstr "Otwórz menu główne"
+msgstr ""
 
 #: campsitemanager/templates/base.html:139
 msgid "Home"
-msgstr "Strona główna"
+msgstr ""
 
 #: campsitemanager/templates/base.html:143
 msgid "Reserve"
-msgstr "Rezerwuj"
+msgstr ""
 
 #: campsitemanager/templates/base.html:147
 msgid "My reservations"
-msgstr "Moje rezerwacje"
+msgstr ""
 
 #: campsitemanager/templates/base.html:151
 msgid "Occupancy"
-msgstr "Obłożenie"
+msgstr ""
 
 #: campsitemanager/templates/base.html:155
 msgid "About us"
-msgstr "O nas"
+msgstr ""
 
 #: campsitemanager/templates/base.html:160
 msgid "Log in"
-msgstr "Zaloguj się"
+msgstr ""
 
 #: campsitemanager/templates/base.html:164
 msgid "Sign up"
-msgstr "Rejestracja"
+msgstr ""
 
 #: campsitemanager/templates/base.html:183 config/settings/base.py:34
 msgid "English"
-msgstr "Angielski"
+msgstr ""
 
 #: campsitemanager/templates/base.html:190 config/settings/base.py:33
 msgid "Polish"
-msgstr "Polski"
+msgstr ""
 
 #: campsitemanager/templates/base.html:207
 msgid "Close"
@@ -369,124 +338,124 @@ msgstr ""
 
 #: campsitemanager/templates/pages/cancel_reservation_confirm.html:6
 msgid "Cancel Reservation"
-msgstr "Anuluj rezerwację"
+msgstr ""
 
 #: campsitemanager/templates/pages/cancel_reservation_confirm.html:7
 msgid "Are you sure you want to cancel your reservation for"
-msgstr "Czy na pewno chcesz anulować rezerwację dla"
+msgstr ""
 
 #: campsitemanager/templates/pages/cancel_reservation_confirm.html:7
 msgid "to"
-msgstr "do"
+msgstr ""
 
 #: campsitemanager/templates/pages/cancel_reservation_confirm.html:12
 msgid "Yes, Cancel Reservation"
-msgstr "Tak, anuluj rezerwację"
+msgstr ""
 
 #: campsitemanager/templates/pages/cancel_reservation_confirm.html:14
 msgid "No, go back"
-msgstr "Nie, wróć"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:6
 msgid "My Reservations"
-msgstr "Moje rezerwacje"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:12
 #: campsitemanager/users/views.py:306
 msgid "Start Date"
-msgstr "Data rozpoczęcia"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:13
 #: campsitemanager/users/views.py:307
 msgid "End Date"
-msgstr "Data zakończenia"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:14
 #: campsitemanager/users/views.py:308
 msgid "Number of Adults"
-msgstr "Liczba dorosłych"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:15
 msgid "Number of Children"
-msgstr "Liczba dzieci"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:16
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:17
 msgid "Actions"
-msgstr "Akcje"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:29
 #: campsitemanager/templates/pages/reservation_detail.html:76
 #: campsitemanager/users/views.py:332
 msgid "Confirmed"
-msgstr "Potwierdzony"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:31
 #: campsitemanager/templates/pages/reservation_detail.html:78
 #: campsitemanager/users/views.py:332
 msgid "Pending"
-msgstr "Oczekujący"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:35
 msgid "View"
-msgstr "Zobacz"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:36
 msgid "Cancel"
-msgstr "Anuluj"
+msgstr ""
 
 #: campsitemanager/templates/pages/my_reservations.html:43
 msgid "You have no reservations."
-msgstr "Nie masz żadnych rezerwacji."
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:6
 #: campsitemanager/users/views.py:283
 msgid "Reservation Details"
-msgstr "Szczegóły rezerwacji"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:15
 msgid "Reservation ID:"
-msgstr "ID rezerwacji:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:16
 msgid "Start Date:"
-msgstr "Data rozpoczęcia:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:17
 msgid "End Date:"
-msgstr "Data zakończenia:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:18
 msgid "Number of Adults:"
-msgstr "Liczba dorosłych:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:19
 msgid "Number of Children (0-3 years):"
-msgstr "Liczba dzieci (0-3 lata):"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:20
 msgid "Number of Children (4-13 years):"
-msgstr "Liczba dzieci (4-13 lata):"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:21
 msgid "Number of Animals:"
-msgstr "Liczba zwierząt:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:22
 msgid "Tent Type:"
-msgstr "Rodzaj namiotu:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:26
 #: campsitemanager/users/views.py:314
 msgid "No tent required"
-msgstr "Namiot niewymagany"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:29
 msgid "Caravan Required:"
-msgstr "Wymagana przyczepa:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:31
 #: campsitemanager/templates/pages/reservation_detail.html:38
@@ -498,7 +467,7 @@ msgstr "Wymagana przyczepa:"
 #: campsitemanager/users/views.py:317 campsitemanager/users/views.py:319
 #: campsitemanager/users/views.py:320 campsitemanager/users/views.py:323
 msgid "Yes"
-msgstr "Tak"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:33
 #: campsitemanager/templates/pages/reservation_detail.html:40
@@ -510,288 +479,288 @@ msgstr "Tak"
 #: campsitemanager/users/views.py:317 campsitemanager/users/views.py:319
 #: campsitemanager/users/views.py:320 campsitemanager/users/views.py:323
 msgid "No"
-msgstr "Nie"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:36
 msgid "Electricity for Tent:"
-msgstr "Prąd do namiotu:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:43
 msgid "Electricity for Caravan:"
-msgstr "Prąd do przyczepy:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:50
 msgid "Extra Person Count:"
-msgstr "Liczba dodatkowych osób:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:51
 msgid "Waste Disposal:"
-msgstr "Wywóz odpadów:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:58
 msgid "Parking Required:"
-msgstr "Wymagany parking:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:65
 msgid "Number of Adults at Beach:"
-msgstr "Liczba dorosłych na plaży:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:66
 msgid "Number of Children at Beach:"
-msgstr "Liczba dzieci na plaży:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:67
 msgid "Discount Applied:"
-msgstr "Zastosowano zniżkę:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:74
 msgid "Reservation Status:"
-msgstr "Status rezerwacji:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:81
 msgid "Cancellation Status:"
-msgstr "Status anulowania:"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:83
 #: campsitemanager/users/views.py:333
 msgid "Canceled"
-msgstr "Anulowano"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:85
 #: campsitemanager/users/views.py:333
 msgid "Active"
-msgstr "Aktywna"
+msgstr ""
 
 #: campsitemanager/templates/pages/reservation_detail.html:90
 msgid "Back to My Reservations"
-msgstr "Powrót do moich rezerwacji"
+msgstr ""
 
 #: campsitemanager/users/admin.py:25
 msgid "Personal info"
-msgstr "Dane osobowe"
+msgstr ""
 
 #: campsitemanager/users/admin.py:27
 msgid "Permissions"
-msgstr "Uprawnienia"
+msgstr ""
 
 #: campsitemanager/users/admin.py:38
 msgid "Important dates"
-msgstr "Ważne daty"
+msgstr ""
 
 #: campsitemanager/users/apps.py:7
 msgid "Users"
-msgstr "Użytkownicy"
+msgstr ""
 
 #: campsitemanager/users/forms.py:28
 #: campsitemanager/users/tests/test_forms.py:35
 msgid "This email has already been taken."
-msgstr "Ten adres e-mail jest już zajęty."
+msgstr ""
 
 #: campsitemanager/users/models.py:16
 msgid "Name of User"
-msgstr "Nazwa użytkownika"
+msgstr ""
 
 #: campsitemanager/users/models.py:20
 msgid "email address"
-msgstr "Adres e-mail"
+msgstr ""
 
 #: campsitemanager/users/models.py:41
 msgid "Imię i nazwisko"
-msgstr "Imię i nazwisko"
+msgstr ""
 
 #: campsitemanager/users/models.py:42 campsitemanager/users/views.py:304
 msgid "Email"
-msgstr "E-mail"
+msgstr ""
 
 #: campsitemanager/users/models.py:43
 msgid "Numer telefonu"
-msgstr "Numer telefonu"
+msgstr ""
 
 #: campsitemanager/users/models.py:46
 msgid "Data rozpoczęcia"
-msgstr "Data rozpoczęcia"
+msgstr ""
 
 #: campsitemanager/users/models.py:47
 msgid "Data zakończenia"
-msgstr "Data zakończenia"
+msgstr ""
 
 #: campsitemanager/users/models.py:50
 msgid "Liczba dorosłych"
-msgstr "Liczba dorosłych"
+msgstr ""
 
 #: campsitemanager/users/models.py:51
 msgid "Liczba dzieci (0-3 lata)"
-msgstr "Liczba dzieci (0-3 lata)"
+msgstr ""
 
 #: campsitemanager/users/models.py:52
 msgid "Liczba dzieci (4-13 lat)"
-msgstr "Liczba dzieci (4-13 lat)"
+msgstr ""
 
 #: campsitemanager/users/models.py:53
 msgid "Liczba zwierząt"
-msgstr "Liczba zwierząt"
+msgstr ""
 
 #: campsitemanager/users/models.py:57
 msgid "Namiot 2-osobowy"
-msgstr "Namiot 2-osobowy"
+msgstr ""
 
 #: campsitemanager/users/models.py:58
 msgid "Namiot 3-4 osobowy"
-msgstr "Namiot 3-4 osobowy"
+msgstr ""
 
 #: campsitemanager/users/models.py:59
 msgid "Namiot 5-6 osobowy"
-msgstr "Namiot 5-6 osobowy"
+msgstr ""
 
 #: campsitemanager/users/models.py:61
 msgid "Rodzaj namiotu"
-msgstr "Rodzaj namiotu"
+msgstr ""
 
 #: campsitemanager/users/models.py:63
 msgid "Czy wymagana przyczepa/kamper"
-msgstr "Czy wymagana przyczepa/kamper"
+msgstr ""
 
 #: campsitemanager/users/models.py:66
 msgid "Prąd i sanitariaty dla namiotu"
-msgstr "Prąd i sanitariaty dla namiotu"
+msgstr ""
 
 #: campsitemanager/users/models.py:67
 msgid "Prąd i sanitariaty dla przyczepy/kampera"
-msgstr "Prąd i sanitariaty dla przyczepy/kampera"
+msgstr ""
 
 #: campsitemanager/users/models.py:68
 msgid "Liczba dodatkowych osób"
-msgstr "Liczba dodatkowych osób"
+msgstr ""
 
 #: campsitemanager/users/models.py:69
 msgid "Wywóz odpadów"
-msgstr "Wywóz odpadów"
+msgstr ""
 
 #: campsitemanager/users/models.py:70
 msgid "Parking wymagany"
-msgstr "Parking wymagany"
+msgstr ""
 
 #: campsitemanager/users/models.py:73
 msgid "Liczba dorosłych na plaży"
-msgstr "Liczba dorosłych na plaży"
+msgstr ""
 
 #: campsitemanager/users/models.py:74
 msgid "Liczba dzieci na plaży"
-msgstr "Liczba dzieci na plaży"
+msgstr ""
 
 #: campsitemanager/users/models.py:77
 msgid "Zastosuj zniżkę za pobyt powyżej 5 dni"
-msgstr "Apply discount for stay longer than 5 days"
+msgstr ""
 
 #: campsitemanager/users/models.py:80
 msgid "Data zapytania"
-msgstr "Inquiry date"
+msgstr ""
 
 #: campsitemanager/users/models.py:83
 msgid "Czy pobyt został potwierdzony przez camping?"
-msgstr "Has the stay been confirmed by the campsite?"
+msgstr ""
 
 #: campsitemanager/users/models.py:83
 msgid "Potwierdzone"
-msgstr "Confirmed"
+msgstr ""
 
 #: campsitemanager/users/models.py:84
 msgid "Czy rezerwacja została anulowana przez użytkownika?"
-msgstr "Has the reservation been canceled by the user?"
+msgstr ""
 
 #: campsitemanager/users/models.py:84
 msgid "Anulowane"
-msgstr "Canceled"
+msgstr ""
 
 #: campsitemanager/users/models.py:100
 msgid "Rezerwacja"
-msgstr "Reservation"
+msgstr ""
 
 #: campsitemanager/users/models.py:101
 msgid "Rezerwacje"
-msgstr "Reservations"
+msgstr ""
 
 #: campsitemanager/users/tests/test_views.py:71
 #: campsitemanager/users/views.py:48
 msgid "Information successfully updated"
-msgstr "Informacje zostały pomyślnie zaktualizowane"
+msgstr ""
 
 #: campsitemanager/users/views.py:279
 msgid "Wydrukuj tę stronę i okaż ją przy wjeździe na kemping"
-msgstr "Wydrukuj tę stronę i okaż ją przy wjeździe na kemping"
+msgstr ""
 
 #: campsitemanager/users/views.py:303
 msgid "Full Name"
-msgstr "Imie i nazwisko"
+msgstr ""
 
 #: campsitemanager/users/views.py:305
 msgid "Phone Number"
-msgstr "Numer telefonu"
+msgstr ""
 
 #: campsitemanager/users/views.py:309
 msgid "Number of Children (0-3 years)"
-msgstr "Liczba dzieci (0-3 lata):"
+msgstr ""
 
 #: campsitemanager/users/views.py:310
 msgid "Number of Children (4-13 years)"
-msgstr "Liczba dzieci (4-13 lata):"
+msgstr ""
 
 #: campsitemanager/users/views.py:311
 msgid "Number of Animals"
-msgstr "Liczba zwierząt:"
+msgstr ""
 
 #: campsitemanager/users/views.py:314
 msgid "Tent Type"
-msgstr "Rodzaj namiotu:"
+msgstr ""
 
 #: campsitemanager/users/views.py:315
 msgid "Caravan Required"
-msgstr "Wymagana przyczepa:"
+msgstr ""
 
 #: campsitemanager/users/views.py:316
 msgid "Electricity for Tent"
-msgstr "Prąd do namiotu:"
+msgstr ""
 
 #: campsitemanager/users/views.py:317
 msgid "Electricity for Caravan"
-msgstr "Prąd do przyczepy:"
+msgstr ""
 
 #: campsitemanager/users/views.py:318
 msgid "Extra Person Count"
-msgstr "Liczba dodatkowych osób:"
+msgstr ""
 
 #: campsitemanager/users/views.py:319
 msgid "Waste Disposal"
-msgstr "Wywóz odpadów:"
+msgstr ""
 
 #: campsitemanager/users/views.py:320
 msgid "Parking Required"
-msgstr "Wymagany parking:"
+msgstr ""
 
 #: campsitemanager/users/views.py:321
 msgid "Number of Adults at Beach"
-msgstr "Liczba dorosłych na plaży:"
+msgstr ""
 
 #: campsitemanager/users/views.py:322
 msgid "Number of Children at Beach"
-msgstr "Liczba dzieci na plaży:"
+msgstr ""
 
 #: campsitemanager/users/views.py:323
 msgid "Discount Applied"
-msgstr "Zastosowano zniżkę:"
+msgstr ""
 
 #: campsitemanager/users/views.py:332
 msgid "Reservation Status"
-msgstr "Status rezerwacji:"
+msgstr ""
 
 #: campsitemanager/users/views.py:333
 msgid "Cancellation Status"
-msgstr "Ważność karty meldunkowej"
+msgstr ""
 
 #: config/settings/base.py:35
 msgid "French"
-msgstr "Francuski"
+msgstr ""
 
 #: config/settings/base.py:36
 msgid "Portuguese"
-msgstr "Portugalski"
+msgstr ""
