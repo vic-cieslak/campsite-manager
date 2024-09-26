@@ -61,6 +61,53 @@ Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings
 
 ## Basic Commands
 
+### Setup local env
+
+create .envs for .postgres and .django
+in .envs/.local:
+
+.django
+
+    ```bash
+    
+    
+    # General
+    # ------------------------------------------------------------------------------
+    USE_DOCKER=yes
+    IPYTHONDIR=/app/.ipython
+    # Redis
+    # ------------------------------------------------------------------------------
+    REDIS_URL=redis://redis:6379/0
+    
+    # Celery
+    # ------------------------------------------------------------------------------
+    
+    # Flower
+    CELERY_FLOWER_USER=debug
+    CELERY_FLOWER_PASSWORD=debug
+    ```
+
+.postgres
+
+    ```bash
+    # PostgreSQL
+    # ------------------------------------------------------------------------------
+    POSTGRES_HOST=postgres
+    POSTGRES_PORT=5432
+    POSTGRES_DB=campsitemanager
+    POSTGRES_USER=debug
+    POSTGRES_PASSWORD=debug
+    ```
+
+Start containers:
+
+  ```bash
+  $ docker compose -f local.yml up --build
+  ```
+
+Access 127.0.0.1:8000 to access local web instance.
+
+
 ### Setting Up Your Users
 
 - To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
