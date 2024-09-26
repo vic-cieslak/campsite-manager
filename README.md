@@ -47,8 +47,12 @@ https://github.com/user-attachments/assets/d81a8b5d-1ad1-4045-8a44-24eddbac5e53
   - Admin view for monitoring daily and future camping site occupancy.
 
 ## Screenshots
-![Screenshot of Reservation Form](https://github.com/user-attachments/assets/665efecb-2d85-4222-9697-2c5766315443)
-![Screenshot of Occupancy Tracking](https://github.com/user-attachments/assets/d81a8b5d-1ad1-4045-8a44-24eddbac5e53)
+
+![Screenshot of Reservation Form](![obraz](https://github.com/user-attachments/assets/80b640ae-45ec-4d44-b15d-682062400d6c)
+)
+
+![Screenshot of Occupancy Tracking](![obraz](https://github.com/user-attachments/assets/7cd4d8b9-f4ec-4768-b326-49d539d67bd5)
+)
 
 ## Settings
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
