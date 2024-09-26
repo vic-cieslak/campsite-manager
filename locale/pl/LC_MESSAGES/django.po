@@ -346,7 +346,7 @@ msgstr "O nas"
 #: campsitemanager/templates/base.html:160
 msgid "Log in"
 msgstr "Zaloguj się"
-
+    
 #: campsitemanager/templates/base.html:164
 msgid "Sign up"
 msgstr "Rejestracja"
